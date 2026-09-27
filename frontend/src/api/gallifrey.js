@@ -26,7 +26,8 @@ export const buscarSessaoEmAndamento = (sinal) =>
 
 /**
  * Cria a sessão — ÚNICO momento em que o contador de sessões é incrementado.
- * @param {{ topico_ids: import('./tipos.js').Id[], nivel_cognitivo: import('./tipos.js').FiltroNivelCognitivo, num_questoes: number }} parametros
+ * O lote sempre mistura questões de todos os níveis cognitivos e tem quantidade fixa (definida pelo backend).
+ * @param {{ topico_ids: import('./tipos.js').Id[] }} parametros
  * @returns {Promise<import('./tipos.js').Sessao>}
  */
 export const iniciarSessao = (parametros) => requisicao('POST', '/sessoes', { corpo: parametros })

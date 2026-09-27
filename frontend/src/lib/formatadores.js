@@ -62,7 +62,6 @@ export function plural(n, singular, pluralForma = `${singular}s`) {
 export const ROTULO_NIVEL = {
   ANALISE: 'Análise',
   AVALIACAO: 'Avaliação',
-  TODOS: 'Todos os níveis',
 }
 
 export const ROTULO_STATUS = {

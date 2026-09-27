@@ -11,7 +11,6 @@ const Questao = lazy(() => import('./paginas/Questao.jsx'))
 const Resultados = lazy(() => import('./paginas/Resultados.jsx'))
 const Revisao = lazy(() => import('./paginas/Revisao.jsx'))
 const Historico = lazy(() => import('./paginas/Historico.jsx'))
-const Sobre = lazy(() => import('./paginas/Sobre.jsx'))
 const NaoEncontrado = lazy(() => import('./paginas/NaoEncontrado.jsx'))
 
 const pagina = (Componente) => (
@@ -28,7 +27,6 @@ const pagina = (Componente) => (
  *   /missao/:sessaoId/resultado    Tela de Resultados
  *   /missao/:sessaoId/revisao      "Ver todas as questões" (?filtro=erradas para só as erradas)
  *   /historico                     Histórico de Sessões
- *   /sobre                         Sobre o Gallifrey
  */
 const roteador = createBrowserRouter(
   [
@@ -45,7 +43,6 @@ const roteador = createBrowserRouter(
             { path: 'missao/:sessaoId/resultado', element: pagina(Resultados) },
             { path: 'missao/:sessaoId/revisao', element: pagina(Revisao) },
             { path: 'historico', element: pagina(Historico) },
-            { path: 'sobre', element: pagina(Sobre) },
             { path: '*', element: pagina(NaoEncontrado) },
           ],
         },

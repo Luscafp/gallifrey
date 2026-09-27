@@ -13,7 +13,6 @@
 /** @typedef {number|string} Id */
 
 /** @typedef {'ANALISE'|'AVALIACAO'} NivelCognitivo */
-/** @typedef {NivelCognitivo|'TODOS'} FiltroNivelCognitivo */
 /** @typedef {'EM_ANDAMENTO'|'CONCLUIDA'|'ENCERRADA_MANUALMENTE'} StatusSessao */
 /** @typedef {'CONCLUIDA'|'ENCERRADA_MANUALMENTE'} MotivoFinalizacao */
 /** @typedef {'7d'|'30d'|'tudo'} PeriodoHistorico */
@@ -92,7 +91,6 @@
  * @property {StatusSessao} status
  * @property {string} data_inicio
  * @property {string|null} data_fim
- * @property {FiltroNivelCognitivo} nivel_cognitivo
  * @property {Topico[]} topicos
  * @property {boolean} todos_topicos        true quando todos os tópicos existentes foram selecionados
  * @property {number} num_questoes_configuradas
@@ -196,7 +194,6 @@
  * @property {StatusSessao} status
  * @property {string} data_inicio
  * @property {string|null} data_fim
- * @property {FiltroNivelCognitivo} nivel_cognitivo
  * @property {Topico[]} topicos
  * @property {boolean} todos_topicos
  * @property {number} num_questoes_configuradas
