@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nome": "Variáveis"
+  },
+  {
+    "id": 2,
+    "nome": "Tipos Primitivos"
+  },
+  {
+    "id": 3,
+    "nome": "Atribuições"
+  },
+  {
+    "id": 4,
+    "nome": "Condicionais SE"
+  },
+  {
+    "id": 5,
+    "nome": "Operadores"
+  },
+  {
+    "id": 6,
+    "nome": "Boas Práticas"
+  }
+]

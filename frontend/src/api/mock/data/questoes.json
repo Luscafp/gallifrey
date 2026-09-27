@@ -1,0 +1,2279 @@
+[
+  {
+    "id": 1,
+    "topico_id": 1,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "O que será impresso pelo código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 10\nif x > 5:\n    y = x * 2\nprint(y)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "10"
+      },
+      {
+        "id": "B",
+        "texto": "20"
+      },
+      {
+        "id": "C",
+        "texto": "NameError: name 'y' is not defined"
+      },
+      {
+        "id": "D",
+        "texto": "None"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. `y` recebe `x * 2`, ou seja, 20; o valor de `x` não é o que se imprime.",
+      "B": "Correta. `10 > 5` é True, então `y = 10 * 2 = 20`. Em Python não há escopo de bloco: variáveis criadas dentro de um `if` continuam acessíveis depois dele (diferente de C e Java).",
+      "C": "Incorreta. Como a condição é verdadeira, `y` é criada antes do `print`. Em Python, o `if` não cria um escopo próprio.",
+      "D": "Incorreta. `y` recebeu o valor 20; Python não atribui None automaticamente a variáveis."
+    }
+  },
+  {
+    "id": 2,
+    "topico_id": 1,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual é o tipo de `x` após cada uma das atribuições abaixo, na ordem em que aparecem?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 5\nx = 5.0\nx = \"5\"\nx = True"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "int, float, str, bool"
+      },
+      {
+        "id": "B",
+        "texto": "int, float, str, int"
+      },
+      {
+        "id": "C",
+        "texto": "number, float, string, boolean"
+      },
+      {
+        "id": "D",
+        "texto": "int, int, str, int"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `5` → int, `5.0` → float, `\"5\"` → str, `True` → bool. Python infere o tipo a partir do literal, e a mesma variável pode referenciar objetos de tipos diferentes.",
+      "B": "Incorreta. `True` é do tipo `bool`; `type(True)` retorna `<class 'bool'>`, e não `int`.",
+      "C": "Incorreta. Python não usa os nomes `number`, `string` ou `boolean`; os tipos corretos são `int`, `float`, `str` e `bool`.",
+      "D": "Incorreta. `5.0` é um literal float (tem ponto decimal), e `True` é do tipo `bool`, ainda que `bool` seja subclasse de `int`."
+    }
+  },
+  {
+    "id": 3,
+    "topico_id": 1,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise as atribuições abaixo. Qual delas gera erro ao ser executada?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`PONTOS2 = 10`"
+      },
+      {
+        "id": "B",
+        "texto": "`class = 10`"
+      },
+      {
+        "id": "C",
+        "texto": "`escola_ = 10`"
+      },
+      {
+        "id": "D",
+        "texto": "`_valor = 10`"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. Dígitos são permitidos desde que não estejam no início do nome, e letras maiúsculas também são válidas.",
+      "B": "Correta. `class` é palavra reservada do Python e não pode ser usada como nome de variável; a linha gera SyntaxError.",
+      "C": "Incorreta. O sublinhado é permitido em qualquer posição do identificador, inclusive no final.",
+      "D": "Incorreta. Identificadores podem começar com sublinhado; por convenção, isso indica uso interno."
+    }
+  },
+  {
+    "id": 4,
+    "topico_id": 1,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será o resultado da execução do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "total = 150\nTotal = total + 50\nprint(total, Total)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "NameError: name 'Total' is not defined"
+      },
+      {
+        "id": "B",
+        "texto": "150 200"
+      },
+      {
+        "id": "C",
+        "texto": "200 200"
+      },
+      {
+        "id": "D",
+        "texto": "150 150"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. `Total` é criada na segunda linha, antes de ser usada no `print`.",
+      "B": "Correta. Python diferencia maiúsculas de minúsculas (é case-sensitive): `total` e `Total` são variáveis distintas. `total` permanece 150 e `Total` recebe 150 + 50 = 200.",
+      "C": "Incorreta. Isso só ocorreria se `total` e `Total` fossem o mesmo nome; em Python, são identificadores diferentes.",
+      "D": "Incorreta. `Total` recebe o resultado de `total + 50`, que é 200."
+    }
+  },
+  {
+    "id": 5,
+    "topico_id": 1,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise o código abaixo. O que será impresso?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "idade = 20\nidade = idade + 1\nidade = \"vinte e um\"\nprint(type(idade))"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "<class 'int'>"
+      },
+      {
+        "id": "B",
+        "texto": "<class 'str'>"
+      },
+      {
+        "id": "C",
+        "texto": "TypeError: a variável não pode mudar de tipo"
+      },
+      {
+        "id": "D",
+        "texto": "<class 'float'>"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. `idade` referenciava um int nas duas primeiras linhas, mas a última atribuição a faz referenciar uma string.",
+      "B": "Correta. Python tem tipagem dinâmica: o tipo pertence ao objeto, não à variável. Após a terceira linha, `idade` referencia a string \"vinte e um\", então `type(idade)` é `str`.",
+      "C": "Incorreta. Uma variável pode referenciar objetos de tipos diferentes ao longo do programa; não há erro.",
+      "D": "Incorreta. Nenhuma operação produz float: `20 + 1` é int, e o valor final é uma string."
+    }
+  },
+  {
+    "id": 6,
+    "topico_id": 1,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual alternativa descreve corretamente o comportamento das variáveis em Python, em comparação com linguagens de tipagem estática?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Variáveis não permitem, em nenhum caso, operações entre tipos diferentes."
+      },
+      {
+        "id": "B",
+        "texto": "Todas as variáveis são convertidas automaticamente para o tipo mais genérico durante as operações."
+      },
+      {
+        "id": "C",
+        "texto": "Variáveis têm tipo fixo, mas esse tipo pode ser qualquer um dos tipos primitivos."
+      },
+      {
+        "id": "D",
+        "texto": "O tipo está associado ao objeto, não à variável; a variável é um nome que pode referenciar qualquer objeto."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. Python é fortemente tipado para tipos incompatíveis (ex.: str + int gera TypeError), mas permite operações entre tipos compatíveis, como int + float.",
+      "B": "Incorreta. Python não faz conversões implícitas entre tipos incompatíveis; nesses casos, lança TypeError e exige conversão explícita.",
+      "C": "Incorreta. Variáveis em Python não têm tipo fixo; podem referenciar objetos de tipos diferentes em momentos diferentes.",
+      "D": "Correta. Python usa tipagem dinâmica: o tipo é propriedade do objeto. Uma variável é um nome que aponta para um objeto na memória e pode apontar para objetos de tipos distintos ao longo do programa."
+    }
+  },
+  {
+    "id": 7,
+    "topico_id": 1,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Um aluno escreveu o código abaixo, em que `condicao` é definida em outro trecho do programa. Qual análise está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "if condicao:\n    resultado = 42\nprint(resultado)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Sempre funciona, pois Python inicializa variáveis com None."
+      },
+      {
+        "id": "B",
+        "texto": "Pode lançar NameError se `condicao` for falsa, pois `resultado` nunca seria atribuída."
+      },
+      {
+        "id": "C",
+        "texto": "Lança SyntaxError por referenciar `resultado` fora do bloco `if`."
+      },
+      {
+        "id": "D",
+        "texto": "Imprime None quando `condicao` é falsa."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. Python não inicializa variáveis automaticamente; uma variável só passa a existir quando recebe um valor.",
+      "B": "Correta. Se `condicao` for falsa, a atribuição não é executada e `resultado` não existe quando o `print` é alcançado, gerando NameError.",
+      "C": "Incorreta. A sintaxe é válida; o problema potencial ocorre em tempo de execução (NameError), e só quando a condição é falsa.",
+      "D": "Incorreta. Não existe valor padrão: se `condicao` for falsa, ocorre NameError, e não a impressão de None."
+    }
+  },
+  {
+    "id": 8,
+    "topico_id": 1,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Os dois códigos abaixo calculam o bônus de um funcionário. Considerando legibilidade e manutenção, qual avaliação é a mais adequada?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "a = 3500\nb = a * 0.1\nprint(b)"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "salario = 3500\nbonus = salario * 0.1\nprint(bonus)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código B é melhor, pois os nomes descrevem o propósito de cada valor."
+      },
+      {
+        "id": "B",
+        "texto": "São equivalentes, pois o nome das variáveis é irrelevante para a qualidade do código."
+      },
+      {
+        "id": "C",
+        "texto": "O Código B está incorreto, pois `salario` e `bonus` são palavras reservadas."
+      },
+      {
+        "id": "D",
+        "texto": "O Código A é melhor, pois nomes curtos deixam o programa mais rápido."
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Os dois produzem o mesmo resultado, mas nomes descritivos como `salario` e `bonus` tornam o código autoexplicativo e facilitam a manutenção.",
+      "B": "Incorreta. Para o interpretador são equivalentes, mas código é lido por pessoas; nomes significativos são uma das principais boas práticas.",
+      "C": "Incorreta. `salario` e `bonus` não são palavras reservadas do Python; são identificadores válidos.",
+      "D": "Incorreta. O tamanho do nome não tem impacto relevante no desempenho; nomes de uma letra só prejudicam a leitura."
+    }
+  },
+  {
+    "id": 9,
+    "topico_id": 1,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Considerando as boas práticas, qual das alternativas representa a declaração de constante mais adequada em Python?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`const TAXA_JUROS = 0.05`"
+      },
+      {
+        "id": "B",
+        "texto": "`taxa_juros = 0.05`"
+      },
+      {
+        "id": "C",
+        "texto": "`TAXA_JUROS = 0.05`"
+      },
+      {
+        "id": "D",
+        "texto": "`var TAXA_JUROS = 0.05`"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `const` não é palavra reservada em Python; a linha causaria SyntaxError.",
+      "B": "Incorreta. Funciona, mas nomes em minúsculas indicam variáveis comuns; o PEP 8 recomenda MAIÚSCULAS para constantes.",
+      "C": "Correta. Pelo PEP 8, constantes são nomeadas em UPPER_CASE. Python não impede a reatribuição, mas a convenção sinaliza ao leitor que o valor não deve ser alterado.",
+      "D": "Incorreta. `var` não é palavra reservada em Python; a linha causaria SyntaxError."
+    }
+  },
+  {
+    "id": 10,
+    "topico_id": 1,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Os dois trechos abaixo definem a situação de um aluno a partir da nota digitada. Qual avaliação está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "nota = float(input(\"Nota: \"))\nif nota >= 7:\n    situacao = \"aprovado\"\nprint(situacao)"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "nota = float(input(\"Nota: \"))\nsituacao = \"reprovado\"\nif nota >= 7:\n    situacao = \"aprovado\"\nprint(situacao)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código B é mais robusto: `situacao` sempre tem valor, enquanto o A gera NameError para notas abaixo de 7."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos geram NameError, pois variáveis criadas dentro de um `if` não são visíveis fora dele."
+      },
+      {
+        "id": "C",
+        "texto": "Ambos funcionam para qualquer nota, pois Python cria `situacao` com valor vazio."
+      },
+      {
+        "id": "D",
+        "texto": "Apenas o Código A é adequado; inicializar a variável antes do `if` é redundante."
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Inicializar a variável com um valor padrão antes do condicional garante que ela exista em qualquer caminho de execução. No Código A, uma nota 5, por exemplo, provoca NameError.",
+      "B": "Incorreta. Em Python, o `if` não cria escopo: o Código B funciona para qualquer nota, e o Código A funciona quando a nota é 7 ou mais.",
+      "C": "Incorreta. Python não cria variáveis com valor padrão; no Código A, `situacao` só existe se o bloco do `if` for executado.",
+      "D": "Incorreta. Sem a inicialização, notas menores que 7 fazem o `print` do Código A gerar NameError."
+    }
+  },
+  {
+    "id": 11,
+    "topico_id": 2,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "print(type(True))\nprint(isinstance(True, int))"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "<class 'bool'>\nTypeError"
+      },
+      {
+        "id": "B",
+        "texto": "<class 'bool'>\nFalse"
+      },
+      {
+        "id": "C",
+        "texto": "<class 'bool'>\nTrue"
+      },
+      {
+        "id": "D",
+        "texto": "<class 'int'>\nTrue"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `isinstance` aceita um tipo como segundo argumento normalmente; não há TypeError.",
+      "B": "Incorreta. `isinstance(True, int)` retorna True porque `bool` é subclasse de `int` em Python.",
+      "C": "Correta. `type(True)` retorna `<class 'bool'>`, e `isinstance(True, int)` retorna True, pois `bool` é subclasse de `int` — `True` equivale a 1 internamente.",
+      "D": "Incorreta. `type()` retorna o tipo exato do objeto, que é `bool`, mesmo sendo `bool` subclasse de `int`."
+    }
+  },
+  {
+    "id": 12,
+    "topico_id": 2,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise o código abaixo. O que acontece ao executá-lo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "preco = \"29.90\"\nquantidade = 3\ntotal = preco * quantidade\nprint(total)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Lança TypeError, pois não se pode multiplicar string por inteiro."
+      },
+      {
+        "id": "B",
+        "texto": "Lança ValueError, pois \"29.90\" contém ponto decimal."
+      },
+      {
+        "id": "C",
+        "texto": "Imprime 89.7."
+      },
+      {
+        "id": "D",
+        "texto": "Imprime 29.9029.9029.90, pois `*` entre str e int repete a string."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. Python aceita `str * int` sem erro; o resultado é a repetição da string. O TypeError ocorreria com `str * float`, por exemplo.",
+      "B": "Incorreta. Não há tentativa de conversão numérica no código, portanto não há ValueError.",
+      "C": "Incorreta. `preco` é uma string, então `*` não realiza multiplicação aritmética.",
+      "D": "Correta. `str * int` repete a string: `\"29.90\" * 3` resulta em `\"29.9029.9029.90\"`. Para calcular o total, seria preciso `float(preco) * quantidade`."
+    }
+  },
+  {
+    "id": 13,
+    "topico_id": 2,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 3.7\nprint(int(x))\nprint(round(x))"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "3\n3"
+      },
+      {
+        "id": "B",
+        "texto": "4\n4"
+      },
+      {
+        "id": "C",
+        "texto": "3\n4"
+      },
+      {
+        "id": "D",
+        "texto": "4\n3"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `round(3.7)` arredonda para o inteiro mais próximo, que é 4.",
+      "B": "Incorreta. `int(3.7)` trunca (descarta a parte decimal), retornando 3, e não 4.",
+      "C": "Correta. `int(3.7)` trunca para 3 (não arredonda), enquanto `round(3.7)` arredonda para 4.",
+      "D": "Incorreta. Os comportamentos estão invertidos: `int` trunca (3) e `round` arredonda (4)."
+    }
+  },
+  {
+    "id": 14,
+    "topico_id": 2,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "a = True\nb = False\nprint(a + b)\nprint(a * 5)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "True\nFalse"
+      },
+      {
+        "id": "B",
+        "texto": "TrueFalse\nTrueTrueTrueTrueTrue"
+      },
+      {
+        "id": "C",
+        "texto": "TypeError: operação inválida com bool"
+      },
+      {
+        "id": "D",
+        "texto": "1\n5"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. As operações aritméticas retornam int, não bool.",
+      "B": "Incorreta. `bool` é subclasse de `int`; em operações aritméticas, `True` vale 1 e `False` vale 0 — não há concatenação de texto.",
+      "C": "Incorreta. Operações aritméticas com bool são válidas, pois bool é subclasse de int.",
+      "D": "Correta. `True + False` = `1 + 0` = 1, e `True * 5` = `1 * 5` = 5. O resultado dessas operações é do tipo int."
+    }
+  },
+  {
+    "id": 15,
+    "topico_id": 2,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = bool(0)\ny = bool(\"False\")\nprint(x, y)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "False True"
+      },
+      {
+        "id": "B",
+        "texto": "False False"
+      },
+      {
+        "id": "C",
+        "texto": "True True"
+      },
+      {
+        "id": "D",
+        "texto": "ValueError: \"False\" não é um booleano válido"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `bool(0)` é False, pois zero é falsy. Já `bool(\"False\")` é True: qualquer string não vazia é truthy, independentemente do conteúdo.",
+      "B": "Incorreta. `bool()` não interpreta o texto da string; \"False\" é uma string não vazia e, portanto, truthy.",
+      "C": "Incorreta. O inteiro 0 é falsy, então `bool(0)` retorna False.",
+      "D": "Incorreta. `bool()` aceita qualquer objeto e nunca lança ValueError; apenas avalia se o valor é truthy ou falsy."
+    }
+  },
+  {
+    "id": 16,
+    "topico_id": 2,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual das implementações abaixo é a forma mais segura de converter a entrada do usuário para float e tratar entradas inválidas?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "entrada = input(\"Valor: \")\nif entrada.replace(\".\", \"\", 1).isdigit():\n    valor = float(entrada)\nelse:\n    print(\"Inválido\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "entrada = input(\"Valor: \")\ntry:\n    valor = float(entrada)\nexcept ValueError:\n    print(\"Inválido\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código B é mais robusto: aceita todo formato válido para `float()` e trata os inválidos."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos são equivalentes em robustez."
+      },
+      {
+        "id": "C",
+        "texto": "Nenhum dos dois é necessário, pois `float()` nunca lança exceção."
+      },
+      {
+        "id": "D",
+        "texto": "O Código A é mais robusto, pois valida antes de converter."
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `float()` aceita negativos, notação científica e outros formatos válidos, e o `try/except` captura o ValueError das entradas inválidas, sem rejeitar valores corretos.",
+      "B": "Incorreta. O Código A rejeita entradas como \"-2.5\" e \"1e10\", que o Código B aceita corretamente.",
+      "C": "Incorreta. `float(\"abc\")` lança ValueError normalmente.",
+      "D": "Incorreta. O Código A rejeita entradas válidas como \"-3.5\" (negativo) e \"1e3\" (notação científica), pois `.isdigit()` não reconhece esses formatos."
+    }
+  },
+  {
+    "id": 17,
+    "topico_id": 2,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Avalie qual das situações abaixo pode causar um resultado inesperado ao trabalhar com floats em Python:",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Comparar dois floats com `<` ou `>`."
+      },
+      {
+        "id": "B",
+        "texto": "Comparar floats com `==`, pois a representação binária pode introduzir imprecisões."
+      },
+      {
+        "id": "C",
+        "texto": "Usar um float como condição de um `if`."
+      },
+      {
+        "id": "D",
+        "texto": "Somar dois floats e imprimir o resultado."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. Comparações de ordem com floats são, em geral, confiáveis e amplamente usadas.",
+      "B": "Correta. Floats têm precisão limitada em binário: `0.1 + 0.2 == 0.3` retorna False, pois `0.1 + 0.2` vale 0.30000000000000004. Prefira `math.isclose(a, b)`.",
+      "C": "Incorreta. Isso é seguro: 0.0 é falsy e qualquer outro float é truthy.",
+      "D": "Incorreta. A soma é válida; a imprecisão pode aparecer em casas decimais distantes, mas não causa erro nem decisões erradas por si só."
+    }
+  },
+  {
+    "id": 18,
+    "topico_id": 2,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Um aluno precisa verificar se a variável `codigo` é uma string que começa com \"BR\". Qual verificação é a mais correta e robusta?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`if isinstance(codigo, str) and codigo.startswith(\"BR\"):`"
+      },
+      {
+        "id": "B",
+        "texto": "`if type(codigo) == str and codigo[0] == \"B\" and codigo[1] == \"R\":`"
+      },
+      {
+        "id": "C",
+        "texto": "`if codigo[:2] == \"BR\":`"
+      },
+      {
+        "id": "D",
+        "texto": "`if \"BR\" in codigo:`"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `isinstance` garante que é string antes de chamar `.startswith()` (o `and` faz curto-circuito), e `.startswith()` verifica especificamente o início.",
+      "B": "Incorreta. Funciona em alguns casos, mas lança IndexError para strings com menos de dois caracteres, é verboso e `type() ==` não aceita subclasses de str.",
+      "C": "Incorreta. Se `codigo` não for uma sequência (ex.: None ou int), lança TypeError; o tipo não é validado antes do acesso.",
+      "D": "Incorreta. `in` verifica se \"BR\" aparece em qualquer posição da string, não apenas no início; além disso, falha se `codigo` não for string."
+    }
+  },
+  {
+    "id": 19,
+    "topico_id": 2,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Avalie o código abaixo. Qual alternativa descreve corretamente o seu problema?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = input(\"Número: \")\nif x > 0:\n    print(\"positivo\")\nelif x < 0:\n    print(\"negativo\")\nelse:\n    print(\"zero\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O código está correto para qualquer entrada numérica."
+      },
+      {
+        "id": "B",
+        "texto": "Lança TypeError já na primeira comparação, pois `input()` retorna str e str não se compara com int via `>`."
+      },
+      {
+        "id": "C",
+        "texto": "Funciona apenas para entradas inteiras positivas."
+      },
+      {
+        "id": "D",
+        "texto": "Lança SyntaxError na linha do `elif`."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. `input()` retorna str, e comparar str com int usando `>` lança TypeError.",
+      "B": "Correta. `input()` sempre retorna string, e `\"5\" > 0` lança TypeError em Python 3. A correção é converter a entrada: `x = float(input(\"Número: \"))`.",
+      "C": "Incorreta. O problema não é a faixa de valores, e sim o tipo: o erro ocorre para qualquer entrada.",
+      "D": "Incorreta. A sintaxe está correta; o `elif` é válido após o `if`."
+    }
+  },
+  {
+    "id": 20,
+    "topico_id": 2,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Analise o código abaixo e aponte a alternativa que descreve corretamente o seu comportamento:",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "valor = input(\"Digite um número: \")\nif valor.isdigit():\n    numero = int(valor)\n    if numero % 2 == 0:\n        print(\"par\")\n    else:\n        print(\"ímpar\")\nelse:\n    print(\"não é número inteiro positivo\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Está incorreto, pois `isdigit()` não existe em Python."
+      },
+      {
+        "id": "B",
+        "texto": "Funciona para inteiros não negativos, mas trata entradas como \"-4\" e \"3.5\" como inválidas."
+      },
+      {
+        "id": "C",
+        "texto": "Converte corretamente qualquer entrada numérica."
+      },
+      {
+        "id": "D",
+        "texto": "Lança ValueError para entradas com espaços."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. `str.isdigit()` é um método válido de strings.",
+      "B": "Correta. `\"-4\".isdigit()` e `\"3.5\".isdigit()` retornam False, pois o sinal e o ponto não são dígitos. O código é correto para inteiros não negativos, mas rejeita negativos e decimais.",
+      "C": "Incorreta. Como `isdigit()` retorna False para negativos e decimais, essas entradas não são convertidas.",
+      "D": "Incorreta. `isdigit()` retorna False para strings com espaços, e o fluxo segue para o `else`; `int()` nem é chamado."
+    }
+  },
+  {
+    "id": 21,
+    "topico_id": 3,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 10\ny = x\nx += 5\nprint(x, y)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "15 15"
+      },
+      {
+        "id": "B",
+        "texto": "10 10"
+      },
+      {
+        "id": "C",
+        "texto": "15 10"
+      },
+      {
+        "id": "D",
+        "texto": "10 15"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `y` não acompanha as mudanças de `x`: `x += 5` cria um novo objeto (15), e apenas `x` passa a referenciá-lo.",
+      "B": "Incorreta. `x += 5` altera o valor de `x` para 15.",
+      "C": "Correta. `y = x` faz `y` referenciar o mesmo objeto 10. Como inteiros são imutáveis, `x += 5` faz `x` apontar para um novo objeto 15, e `y` continua valendo 10.",
+      "D": "Incorreta. Os valores estão invertidos: `x` é que passa a valer 15, enquanto `y` mantém 10."
+    }
+  },
+  {
+    "id": 22,
+    "topico_id": 3,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 5\nx *= 3\nx -= 4\nx //= 2\nprint(x)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "11"
+      },
+      {
+        "id": "B",
+        "texto": "5.5"
+      },
+      {
+        "id": "C",
+        "texto": "5"
+      },
+      {
+        "id": "D",
+        "texto": "6"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. 11 é o valor antes da última linha; `x //= 2` ainda divide esse valor.",
+      "B": "Incorreta. `//=` realiza divisão inteira (de piso); 5.5 seria o resultado de `/=`.",
+      "C": "Correta. `x = 5` → `x *= 3` (15) → `x -= 4` (11) → `x //= 2` (11 // 2 = 5).",
+      "D": "Incorreta. A divisão inteira descarta a parte fracionária (arredonda para baixo); não arredonda para o inteiro mais próximo."
+    }
+  },
+  {
+    "id": 23,
+    "topico_id": 3,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Que tipo de atribuição o código abaixo realiza?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "a = b = c = 100\nprint(a, b, c)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Atribuição encadeada: as três variáveis referenciam o mesmo objeto 100."
+      },
+      {
+        "id": "B",
+        "texto": "Erro de sintaxe, pois não é possível atribuir a várias variáveis em uma linha."
+      },
+      {
+        "id": "C",
+        "texto": "Desempacotamento de tupla, equivalente a `a, b, c = 100`."
+      },
+      {
+        "id": "D",
+        "texto": "Atribuição múltipla, em que cada variável recebe um valor diferente."
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `a = b = c = 100` é uma atribuição encadeada: a expressão à direita é avaliada uma vez, e `a`, `b` e `c` passam a referenciar o mesmo objeto. O código imprime `100 100 100`.",
+      "B": "Incorreta. A atribuição encadeada é sintaxe válida em Python.",
+      "C": "Incorreta. `a, b, c = 100` causaria TypeError (não é possível desempacotar um int); são construções completamente diferentes.",
+      "D": "Incorreta. Todas as variáveis recebem o mesmo valor (100)."
+    }
+  },
+  {
+    "id": 24,
+    "topico_id": 3,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "a, b = 10, 20\na, b = b, a + b\nprint(a, b)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "20 30"
+      },
+      {
+        "id": "B",
+        "texto": "20 40"
+      },
+      {
+        "id": "C",
+        "texto": "10 30"
+      },
+      {
+        "id": "D",
+        "texto": "SyntaxError: não é possível atribuir duas variáveis na mesma linha"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Na atribuição múltipla, todo o lado direito é avaliado antes: `b` (20) e `a + b` (10 + 20 = 30). Só então os valores são atribuídos a `a` e `b`.",
+      "B": "Incorreta. Esse resultado supõe que `a` já valia 20 ao calcular `a + b`, mas o lado direito é avaliado por completo antes de qualquer atribuição.",
+      "C": "Incorreta. `a` recebe o valor antigo de `b`, que é 20.",
+      "D": "Incorreta. A atribuição múltipla (desempacotamento de tupla) é sintaxe válida em Python."
+    }
+  },
+  {
+    "id": 25,
+    "topico_id": 3,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual valor é impresso pelo código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 5\nx *= 2 + 1\nprint(x)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "10"
+      },
+      {
+        "id": "B",
+        "texto": "SyntaxError"
+      },
+      {
+        "id": "C",
+        "texto": "11"
+      },
+      {
+        "id": "D",
+        "texto": "15"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. O `+ 1` faz parte da expressão à direita e não é ignorado.",
+      "B": "Incorreta. Operadores de atribuição composta aceitam qualquer expressão do lado direito.",
+      "C": "Incorreta. 11 seria o resultado de `x * 2 + 1`; na atribuição composta, toda a expressão à direita é calculada antes.",
+      "D": "Correta. `x *= 2 + 1` equivale a `x = x * (2 + 1)`: primeiro resolve-se `2 + 1 = 3`, depois `5 * 3 = 15`."
+    }
+  },
+  {
+    "id": 26,
+    "topico_id": 3,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Os dois códigos abaixo tentam trocar os valores de `a` e `b`. Qual avaliação está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "a = 5\nb = 10\na = b\nb = a\nprint(a, b)"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "a = 5\nb = 10\ntemp = a\na = b\nb = temp\nprint(a, b)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Ambos têm bug; o único jeito correto é `a, b = b, a`."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos imprimem `10 5` corretamente."
+      },
+      {
+        "id": "C",
+        "texto": "O Código A imprime `10 10` (perde o valor original de `a`); o Código B imprime `10 5`."
+      },
+      {
+        "id": "D",
+        "texto": "O Código A imprime `5 5` e o Código B imprime `10 5`."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `a, b = b, a` é a forma mais idiomática, mas o Código B também está correto: a variável temporária preserva o valor original.",
+      "B": "Incorreta. No Código A, após `a = b`, `a` passa a valer 10; então `b = a` atribui 10 a `b`, e o valor original de `a` se perde.",
+      "C": "Correta. No Código A, `a = b` (a = 10) e depois `b = a` (b = 10). O Código B usa uma variável temporária que preserva o valor original de `a` antes de sobrescrevê-lo.",
+      "D": "Incorreta. No Código A, `a` já vale 10 quando `b = a` é executado, então o resultado é `10 10`."
+    }
+  },
+  {
+    "id": 27,
+    "topico_id": 3,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Considere que `x` pode ser qualquer número. Qual das alternativas atribui a `absoluto` o valor absoluto de `x` da forma mais robusta?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`absoluto = x if x > 0 else x * -1`"
+      },
+      {
+        "id": "B",
+        "texto": "`absoluto = abs(x)`"
+      },
+      {
+        "id": "C",
+        "texto": "`absoluto = x if x != 0 else 0`"
+      },
+      {
+        "id": "D",
+        "texto": "`absoluto = x * x`"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. Funciona para int e float, mas reimplementa algo que a linguagem já oferece; `abs()` é mais legível, menos sujeito a erros e também aceita números complexos.",
+      "B": "Correta. `abs()` é a função nativa para valor absoluto: funciona com int, float e complex, é mais legível e evita erros de lógica.",
+      "C": "Incorreta. Essa lógica não calcula valor absoluto: para `x = -5`, retornaria -5.",
+      "D": "Incorreta. `x * x` calcula o quadrado: para `x = -3`, retornaria 9, e não 3."
+    }
+  },
+  {
+    "id": 28,
+    "topico_id": 3,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Os dois trechos abaixo atribuem à variável `par` a informação de que `n` é par. Qual avaliação é a mais adequada?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "n = 8\nif n % 2 == 0:\n    par = True\nelse:\n    par = False"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "n = 8\npar = n % 2 == 0"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código B atribui o número 0 a `par`, pois `%` é avaliado por último."
+      },
+      {
+        "id": "B",
+        "texto": "O Código B gera TypeError por misturar operadores aritméticos e relacionais."
+      },
+      {
+        "id": "C",
+        "texto": "Apenas o Código A está correto; uma comparação não pode ser atribuída a uma variável."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos atribuem o mesmo valor a `par`, mas o Código B é preferível por ser mais direto."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. `%` tem precedência maior que `==`: primeiro calcula-se `n % 2` (0) e depois `0 == 0` (True).",
+      "B": "Incorreta. Combinar `%` e `==` em uma expressão é válido; o resultado é um booleano.",
+      "C": "Incorreta. Comparações são expressões que retornam `bool` e podem ser atribuídas diretamente a variáveis.",
+      "D": "Correta. `n % 2 == 0` já produz True ou False. Usar `if/else` apenas para atribuir True/False é redundante; o Código B é mais conciso e igualmente legível."
+    }
+  },
+  {
+    "id": 29,
+    "topico_id": 3,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Deseja-se atribuir a `categoria` o valor \"especial\" quando `codigo` for 0 e \"normal\" caso contrário. Avalie as duas implementações:",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "categoria = \"especial\" if codigo == 0 else \"normal\""
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "if codigo == 0:\n    categoria = \"especial\"\nelse:\n    categoria = \"normal\""
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Nenhum dos dois; o idiomático seria `categoria = [\"normal\", \"especial\"][codigo == 0]`."
+      },
+      {
+        "id": "B",
+        "texto": "Apenas o Código A é válido; `if/else` não pode ser usado para atribuir valores."
+      },
+      {
+        "id": "C",
+        "texto": "Apenas o Código B é válido; a expressão condicional é considerada má prática em Python."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos são corretos e equivalentes; a expressão condicional é uma forma concisa para casos simples."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. Indexar uma lista com um booleano funciona, mas é um truque que prejudica a legibilidade.",
+      "B": "Incorreta. Atribuições dentro de blocos `if/else` são perfeitamente válidas e muito comuns.",
+      "C": "Incorreta. A expressão condicional (`x if cond else y`) é idiomática e recomendada para atribuições simples.",
+      "D": "Correta. Os dois atribuem o mesmo valor em todos os casos. A expressão condicional é adequada para escolhas simples entre dois valores; o `if/else` em bloco é preferível quando a lógica é mais longa."
+    }
+  },
+  {
+    "id": 30,
+    "topico_id": 3,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual das alternativas representa a forma mais clara de inicializar as variáveis de um cadastro (`nome`, `idade` e `cidade`) sem valor definido?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Uma atribuição por linha: `nome = None`, `idade = None` e `cidade = None`."
+      },
+      {
+        "id": "B",
+        "texto": "`nome, idade, cidade = None, None, None`"
+      },
+      {
+        "id": "C",
+        "texto": "`nome = idade = cidade = None`"
+      },
+      {
+        "id": "D",
+        "texto": "`nome = None; idade = None; cidade = None`"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Uma instrução por linha é o padrão recomendado pelo PEP 8 e deixa claro que cada variável é inicializada de forma independente.",
+      "B": "Incorreta. Funciona, mas o desempacotamento torna a intenção menos clara e fica difícil de ler conforme o número de variáveis cresce.",
+      "C": "Incorreta. Funciona com None (imutável), mas o padrão é arriscado: com objetos mutáveis, como listas, todas as variáveis compartilhariam o mesmo objeto.",
+      "D": "Incorreta. É válido, mas vários comandos na mesma linha separados por `;` contrariam o PEP 8 (uma instrução por linha)."
+    }
+  },
+  {
+    "id": 31,
+    "topico_id": 4,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 5\nif x > 3:\n    x = x + 1\nif x > 5:\n    x = x + 1\nprint(x)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "7"
+      },
+      {
+        "id": "B",
+        "texto": "8"
+      },
+      {
+        "id": "C",
+        "texto": "5"
+      },
+      {
+        "id": "D",
+        "texto": "6"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Primeiro `if`: `5 > 3` é True → `x = 6`. Segundo `if`: `6 > 5` é True → `x = 7`. Como são `if` independentes (e não `elif`), ambos são avaliados.",
+      "B": "Incorreta. Há apenas dois incrementos no código.",
+      "C": "Incorreta. O primeiro `if` é verdadeiro e altera o valor de `x`.",
+      "D": "Incorreta. Após o primeiro `if`, `x` vale 6; o segundo `if` (6 > 5) também é verdadeiro, então `x` passa a 7."
+    }
+  },
+  {
+    "id": 32,
+    "topico_id": 4,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise o código abaixo. O que será impresso?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "nota = 6\nif nota >= 7:\n    situacao = \"aprovado\"\nif nota >= 5:\n    situacao = \"recuperação\"\nif nota < 5:\n    situacao = \"reprovado\"\nprint(situacao)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "aprovado"
+      },
+      {
+        "id": "B",
+        "texto": "recuperação"
+      },
+      {
+        "id": "C",
+        "texto": "reprovado"
+      },
+      {
+        "id": "D",
+        "texto": "NameError: name 'situacao' is not defined"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. A primeira condição (`6 >= 7`) é falsa, então `situacao` não recebe \"aprovado\".",
+      "B": "Correta. `6 >= 7` é False; `6 >= 5` é True → `situacao = \"recuperação\"`; `6 < 5` é False. O resultado é \"recuperação\".",
+      "C": "Incorreta. A terceira condição (`6 < 5`) é falsa.",
+      "D": "Incorreta. O segundo `if` é verdadeiro para nota 6, o que garante que `situacao` seja definida."
+    }
+  },
+  {
+    "id": 33,
+    "topico_id": 4,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 5\nif x > 0:\n    print(\"A\")\n    if x > 3:\n        print(\"B\")\n    print(\"C\")\nprint(\"D\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "A\nC\nD"
+      },
+      {
+        "id": "B",
+        "texto": "A\nD"
+      },
+      {
+        "id": "C",
+        "texto": "A\nB\nC\nD"
+      },
+      {
+        "id": "D",
+        "texto": "A\nB\nD"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `print(\"B\")` está dentro do `if x > 3`, que é verdadeiro para x = 5.",
+      "B": "Incorreta. Há outros `print` dentro do bloco `if x > 0` que também são executados.",
+      "C": "Correta. `5 > 0` → imprime A. `5 > 3` → imprime B. Após o `if` interno, ainda no bloco externo, imprime C. Fora do `if` externo, imprime D.",
+      "D": "Incorreta. `print(\"C\")` pertence ao bloco do `if x > 0` (mesma indentação de `print(\"A\")`), então também é executado."
+    }
+  },
+  {
+    "id": 34,
+    "topico_id": 4,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise os dois códigos abaixo e determine qual deles gera erro e por quê:",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "x = 5\nif x = 5:\n    print(\"igual\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "x = 5\nif x == 5:\n    print(\"igual\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código A lança NameError; o Código B está correto."
+      },
+      {
+        "id": "B",
+        "texto": "O Código A lança SyntaxError por usar `=` na condição; o Código B está correto."
+      },
+      {
+        "id": "C",
+        "texto": "Ambos estão corretos; `=` e `==` são equivalentes em condicionais."
+      },
+      {
+        "id": "D",
+        "texto": "O Código B lança TypeError, pois `==` não compara inteiros."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. O erro não é NameError, pois `x` está definido; o problema é o uso do operador de atribuição na condição.",
+      "B": "Correta. `=` é atribuição e não pode ser usado como condição de um `if`; isso gera SyntaxError. O operador de comparação é `==`, usado corretamente no Código B.",
+      "C": "Incorreta. Python distingue estritamente `=` (atribuição) de `==` (comparação).",
+      "D": "Incorreta. `==` compara inteiros normalmente."
+    }
+  },
+  {
+    "id": 35,
+    "topico_id": 4,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = \"Python\"\nif len(x) > 5:\n    print(\"longa\")\nelif len(x) == 6:\n    print(\"exata\")\nelse:\n    print(\"curta\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "exata"
+      },
+      {
+        "id": "B",
+        "texto": "curta"
+      },
+      {
+        "id": "C",
+        "texto": "longa\nexata"
+      },
+      {
+        "id": "D",
+        "texto": "longa"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. O `elif` só seria avaliado se o `if` fosse falso; como `6 > 5` é True, ele é ignorado.",
+      "B": "Incorreta. O `else` só é executado quando todas as condições anteriores são falsas.",
+      "C": "Incorreta. Em uma cadeia `if/elif/else`, apenas um bloco é executado.",
+      "D": "Correta. `len(\"Python\")` é 6, e `6 > 5` é True; imprime \"longa\". Como o `if` foi verdadeiro, o `elif` nem é avaliado."
+    }
+  },
+  {
+    "id": 36,
+    "topico_id": 4,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Avalie as implementações abaixo, que classificam o IMC em: abaixo de 18.5 = \"abaixo do peso\"; de 18.5 a 24.9 = \"peso normal\"; acima disso = \"sobrepeso\".",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "imc = 22.0\nif imc < 18.5:\n    cat = \"abaixo do peso\"\nelif imc <= 24.9:\n    cat = \"peso normal\"\nelse:\n    cat = \"sobrepeso\"\nprint(cat)"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "imc = 22.0\nif imc < 18.5:\n    cat = \"abaixo do peso\"\nif imc >= 18.5 and imc <= 24.9:\n    cat = \"peso normal\"\nif imc > 24.9:\n    cat = \"sobrepeso\"\nprint(cat)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Ambos estão incorretos, pois falta a categoria \"obesidade\"."
+      },
+      {
+        "id": "B",
+        "texto": "Os dois produzem resultados diferentes para `imc = 24.9`."
+      },
+      {
+        "id": "C",
+        "texto": "Apenas o Código B está correto, pois usa condições explícitas."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos funcionam, mas o A é preferível: `elif/else` expressa a exclusividade e evita testes desnecessários."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. O enunciado define apenas três categorias; não incluir outras não torna o código incorreto para o escopo pedido.",
+      "B": "Incorreta. Para 24.9, o Código A entra no `elif imc <= 24.9` e o Código B, na segunda condição; ambos resultam em \"peso normal\".",
+      "C": "Incorreta. O Código B funciona, mas não é mais correto que o A; apenas mais verboso.",
+      "D": "Correta. Para imc = 22.0, ambos imprimem \"peso normal\", e as faixas são equivalentes. O Código A, porém, para de testar ao encontrar a primeira condição verdadeira e deixa claro que as categorias são mutuamente exclusivas."
+    }
+  },
+  {
+    "id": 37,
+    "topico_id": 4,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual dos códigos abaixo implementa corretamente a verificação de ano bissexto?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "ano = 2024\nif ano % 4 == 0:\n    print(\"bissexto\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "ano = 2024\nif (ano % 4 == 0 and ano % 100 != 0) or ano % 400 == 0:\n    print(\"bissexto\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código B está incorreto, pois `or` não deve ser combinado com `and`."
+      },
+      {
+        "id": "B",
+        "texto": "Apenas o Código A; ser divisível por 4 é suficiente."
+      },
+      {
+        "id": "C",
+        "texto": "Apenas o Código B; ele implementa a regra completa do calendário gregoriano."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos estão corretos para qualquer ano."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. O `or` é necessário para unir as duas condições da regra, e os parênteses deixam a precedência explícita.",
+      "B": "Incorreta. O Código A falha para anos centenários: 1900 é divisível por 4, mas não é bissexto.",
+      "C": "Correta. Um ano é bissexto se for divisível por 4, exceto os centenários, a menos que também sejam divisíveis por 400. O Código B implementa exatamente essa regra.",
+      "D": "Incorreta. Para 1900, o Código A indica bissexto (errado) e o Código B não (correto). Para 2000, ambos acertam."
+    }
+  },
+  {
+    "id": 38,
+    "topico_id": 4,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Avalie o código abaixo. Qual é o problema e qual seria a correção mais adequada?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "saldo = 1000\nretirada = float(input(\"Valor de retirada: \"))\nif retirada > saldo:\n    print(\"Saldo insuficiente\")\nif retirada <= 0:\n    print(\"Valor inválido\")\nelse:\n    saldo = saldo - retirada\n    print(f\"Novo saldo: {saldo}\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O único problema é a ordem: `retirada <= 0` deve ser testado antes de `retirada > saldo`."
+      },
+      {
+        "id": "B",
+        "texto": "O código está correto para todos os cenários."
+      },
+      {
+        "id": "C",
+        "texto": "Se `retirada > saldo`, o `else` do segundo `if` ainda executa a subtração; o correto é usar `elif`."
+      },
+      {
+        "id": "D",
+        "texto": "O único problema é que `float(input(...))` não trata entradas inválidas."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. Apenas inverter a ordem não resolve: com dois `if` independentes, o `else` ainda poderia executar a subtração indevidamente.",
+      "B": "Incorreta. Para uma retirada de 1500, o código imprime \"Saldo insuficiente\" e, em seguida, executa a subtração no `else`, deixando o saldo negativo.",
+      "C": "Correta. Os dois `if` são independentes: quando a retirada excede o saldo, o primeiro imprime o aviso, mas o segundo (`retirada <= 0`) é falso e o `else` subtrai indevidamente. Com `if/elif/else`, apenas um ramo é executado.",
+      "D": "Incorreta. Tratar entradas inválidas seria uma melhoria, mas o bug principal é a subtração indevida mesmo com saldo insuficiente."
+    }
+  },
+  {
+    "id": 39,
+    "topico_id": 4,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Os códigos abaixo devem implementar a regra: \"se o valor for positivo, dobra; se for negativo, zera; se for zero, mantém\". Qual avaliação está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "v = -3\nif v > 0:\n    v = v * 2\nelif v < 0:\n    v = 0\nprint(v)"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "v = -3\nif v > 0:\n    v = v * 2\nif v < 0:\n    v = 0\nprint(v)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Ambos estão incorretos, pois falta um `else: pass` para o caso de v igual a 0."
+      },
+      {
+        "id": "B",
+        "texto": "Apenas o Código A produz o resultado correto para todos os valores."
+      },
+      {
+        "id": "C",
+        "texto": "Apenas o Código B produz o resultado correto para todos os valores."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos produzem o resultado correto, mas o A expressa melhor a exclusividade das condições com `elif`."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. Um `else` vazio é desnecessário: quando nenhuma condição é verdadeira, nada é executado, o que já mantém o valor.",
+      "B": "Incorreta. O Código B também funciona: após dobrar um positivo, o valor continua positivo, então o segundo `if` não o altera.",
+      "C": "Incorreta. O Código A também está correto: com `elif`, apenas um dos ramos é executado.",
+      "D": "Correta. Para v = 5, -3 e 0, ambos resultam em 10, 0 e 0. No Código B, porém, o segundo `if` é sempre avaliado e a correção depende de o valor dobrado nunca ficar negativo; o `elif` deixa a intenção explícita."
+    }
+  },
+  {
+    "id": 40,
+    "topico_id": 4,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Um sistema de votação exige que o eleitor tenha entre 16 e 70 anos (inclusive) e seja brasileiro. Qual avaliação dos códigos abaixo está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "idade = 25\nbrasileiro = True\nif idade >= 16 and idade <= 70 and brasileiro:\n    print(\"Pode votar\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "idade = 25\nbrasileiro = True\nif 16 <= idade <= 70 and brasileiro == True:\n    print(\"Pode votar\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Apenas o Código B está correto."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos estão corretos; o B usa comparação encadeada, mas `== True` é redundante."
+      },
+      {
+        "id": "C",
+        "texto": "Ambos estão incorretos; é necessário usar `brasileiro is True`."
+      },
+      {
+        "id": "D",
+        "texto": "Apenas o Código A está correto."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. O Código A também está correto e é mais idiomático ao usar `and brasileiro`.",
+      "B": "Correta. Os dois verificam as mesmas condições. O ideal combinaria o melhor de cada um: `if 16 <= idade <= 70 and brasileiro:`.",
+      "C": "Incorreta. `is True` é mais restritivo que o necessário; `and brasileiro` é a forma idiomática.",
+      "D": "Incorreta. O Código B também está correto, embora a comparação `brasileiro == True` seja redundante."
+    }
+  },
+  {
+    "id": 41,
+    "topico_id": 5,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será o valor impresso pelo código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "resultado = 2 ** 3 ** 2\nprint(resultado)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "18"
+      },
+      {
+        "id": "B",
+        "texto": "SyntaxError"
+      },
+      {
+        "id": "C",
+        "texto": "64"
+      },
+      {
+        "id": "D",
+        "texto": "512"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. 18 seria o resultado de `2 * 3 ** 2`; aqui os dois operadores são de potência.",
+      "B": "Incorreta. A expressão é sintaticamente válida.",
+      "C": "Incorreta. 64 seria `(2 ** 3) ** 2 = 8 ** 2`, mas o operador `**` é associativo à direita.",
+      "D": "Correta. `**` é associativo à direita em Python: `2 ** 3 ** 2` = `2 ** (3 ** 2)` = `2 ** 9` = 512."
+    }
+  },
+  {
+    "id": 42,
+    "topico_id": 5,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "O que será impresso pelo código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "a = 5\nb = 0\nc = a and b\nd = a or b\nprint(c, d)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "0 5"
+      },
+      {
+        "id": "B",
+        "texto": "True True"
+      },
+      {
+        "id": "C",
+        "texto": "True False"
+      },
+      {
+        "id": "D",
+        "texto": "False True"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Em `a and b`, `a` (5) é truthy, então o resultado é `b` (0). Em `a or b`, `a` (5) é truthy e é retornado imediatamente (curto-circuito).",
+      "B": "Incorreta. `and`/`or` retornam os operandos originais; além disso, `c` recebe 0, que é falsy.",
+      "C": "Incorreta. Com operandos não booleanos, `and` e `or` retornam um dos operandos, e não True/False.",
+      "D": "Incorreta. Pelo mesmo motivo: o resultado é um dos operandos originais, não um booleano."
+    }
+  },
+  {
+    "id": 43,
+    "topico_id": 5,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "a = 10\nb = 3\nprint(a // b, a % b, a / b)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "3.0 1 3.33"
+      },
+      {
+        "id": "B",
+        "texto": "3 1.0 3.33"
+      },
+      {
+        "id": "C",
+        "texto": "3 1 3"
+      },
+      {
+        "id": "D",
+        "texto": "3 1 3.3333333333333335"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. `//` entre dois inteiros retorna int, e o `print` não arredonda floats para duas casas.",
+      "B": "Incorreta. `%` entre dois inteiros retorna int (1), não float.",
+      "C": "Incorreta. `a / b` retorna float, não int.",
+      "D": "Correta. `10 // 3 = 3` (divisão inteira), `10 % 3 = 1` (resto) e `10 / 3 = 3.3333333333333335` (divisão real, com a imprecisão típica de ponto flutuante)."
+    }
+  },
+  {
+    "id": 44,
+    "topico_id": 5,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "a = 10\nb = 10.0\nprint(a == b)\nprint(a is b)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "True\nFalse"
+      },
+      {
+        "id": "B",
+        "texto": "False\nFalse"
+      },
+      {
+        "id": "C",
+        "texto": "False\nTrue"
+      },
+      {
+        "id": "D",
+        "texto": "True\nTrue"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `a == b` é True, pois compara valores (10 e 10.0 são numericamente iguais). `a is b` é False, pois são objetos distintos, inclusive de tipos diferentes.",
+      "B": "Incorreta. `==` compara valores numéricos entre int e float, e 10 é igual a 10.0.",
+      "C": "Incorreta. Dois objetos de tipos diferentes nunca são o mesmo objeto, então `is` retorna False.",
+      "D": "Incorreta. `is` compara identidade, não valor; `a` (int) e `b` (float) são objetos diferentes."
+    }
+  },
+  {
+    "id": 45,
+    "topico_id": 5,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Qual será a saída do código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "if False and 10 / 0 == 0:\n    print(\"dentro\")\nprint(\"fim\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "SyntaxError"
+      },
+      {
+        "id": "B",
+        "texto": "fim"
+      },
+      {
+        "id": "C",
+        "texto": "ZeroDivisionError: division by zero"
+      },
+      {
+        "id": "D",
+        "texto": "dentro\nfim"
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. A expressão é válida: `/` tem precedência sobre `==`, que tem precedência sobre `and`.",
+      "B": "Correta. Pelo curto-circuito, se o primeiro operando de `and` é False, o resultado já é False e o segundo não é avaliado. A divisão por zero nunca acontece, o bloco é pulado e apenas \"fim\" é impresso.",
+      "C": "Incorreta. `10 / 0` causaria erro se fosse avaliado, mas o `and` interrompe a avaliação ao encontrar False.",
+      "D": "Incorreta. A condição é falsa, então o bloco do `if` não é executado."
+    }
+  },
+  {
+    "id": 46,
+    "topico_id": 5,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual das afirmações sobre o operador `not` está correta?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`not None` retorna None."
+      },
+      {
+        "id": "B",
+        "texto": "`not 0` retorna 0."
+      },
+      {
+        "id": "C",
+        "texto": "`not 'texto'` retorna ''."
+      },
+      {
+        "id": "D",
+        "texto": "`not []` retorna True."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. None é falsy, então `not None` retorna True.",
+      "B": "Incorreta. `not 0` retorna True; `not` sempre retorna um bool.",
+      "C": "Incorreta. `not 'texto'` retorna False, pois strings não vazias são truthy; `not` nunca retorna string.",
+      "D": "Correta. A lista vazia é falsy, então `not []` retorna True. O operador `not` sempre retorna um valor booleano."
+    }
+  },
+  {
+    "id": 47,
+    "topico_id": 5,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual alternativa descreve corretamente o comportamento do operador `and` com valores não booleanos?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`and` só funciona com operandos booleanos; outros tipos causam TypeError."
+      },
+      {
+        "id": "B",
+        "texto": "`and` sempre retorna True ou False, independentemente dos operandos."
+      },
+      {
+        "id": "C",
+        "texto": "`and` retorna o primeiro operando falsy ou, se todos forem truthy, o último operando."
+      },
+      {
+        "id": "D",
+        "texto": "`and` converte os dois operandos para bool antes de operar."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `and` funciona com qualquer tipo em Python.",
+      "B": "Incorreta. `and` retorna um dos operandos: `'a' and 'b'` resulta em `'b'`.",
+      "C": "Correta. Com avaliação de curto-circuito, `and` retorna o primeiro valor falsy ou o último, se todos forem truthy. Ex.: `0 and 5` → 0; `3 and 5` → 5.",
+      "D": "Incorreta. `and` avalia o valor lógico internamente, mas retorna o operando original, sem conversão."
+    }
+  },
+  {
+    "id": 48,
+    "topico_id": 5,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Avalie qual das alternativas melhor descreve a diferença entre `==` e `is` em Python:",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "São equivalentes para tipos primitivos como int e str."
+      },
+      {
+        "id": "B",
+        "texto": "`==` compara tipos, e `is` compara valores."
+      },
+      {
+        "id": "C",
+        "texto": "`==` compara valores (igualdade), e `is` compara a identidade dos objetos na memória."
+      },
+      {
+        "id": "D",
+        "texto": "`is` é mais rápido e deve sempre substituir `==`."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. Objetos com o mesmo valor podem não ser idênticos; o CPython só reaproveita alguns valores (como inteiros de -5 a 256), o que é detalhe de implementação.",
+      "B": "Incorreta. `==` compara valores, e `is` compara identidade (não tipos).",
+      "C": "Correta. `==` verifica se dois objetos têm o mesmo valor; `is` verifica se são o mesmo objeto. Use `is` para None (`x is None`) e `==` para comparar valores.",
+      "D": "Incorreta. `is` não substitui `==`: duas listas com o mesmo conteúdo são iguais (`==`), mas não são o mesmo objeto (`is`)."
+    }
+  },
+  {
+    "id": 49,
+    "topico_id": 5,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Deseja-se verificar se uma nota `n` está fora do intervalo [0, 100]. Avalie as duas condições abaixo:",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "if n < 0 or n > 100:\n    print(\"Nota inválida\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "if not 0 <= n <= 100:\n    print(\"Nota inválida\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Ambos estão corretos e são logicamente equivalentes (leis de De Morgan)."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos estão incorretos, pois os valores 0 e 100 seriam considerados inválidos."
+      },
+      {
+        "id": "C",
+        "texto": "Apenas o Código A está correto; `not` não pode ser aplicado a uma comparação encadeada."
+      },
+      {
+        "id": "D",
+        "texto": "Apenas o Código B está correto; o Código A deveria usar `and` no lugar de `or`."
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. `not (0 <= n and n <= 100)` equivale a `n < 0 or n > 100`. A escolha é de estilo: o Código B é mais conciso; o A, mais explícito.",
+      "B": "Incorreta. Nos dois códigos, 0 e 100 são válidos: `0 < 0` e `100 > 100` são falsos, e `0 <= 0 <= 100` é verdadeiro.",
+      "C": "Incorreta. `not` pode negar qualquer expressão: `0 <= n <= 100` é avaliada primeiro e depois negada.",
+      "D": "Incorreta. `n < 0 and n > 100` nunca seria verdadeiro, pois nenhum número é, ao mesmo tempo, menor que 0 e maior que 100."
+    }
+  },
+  {
+    "id": 50,
+    "topico_id": 5,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Um aluno precisa calcular a média a partir de `soma` e `qtd` (ambos int), preservando as casas decimais. Qual atribuição é a mais adequada?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`media = int(soma / qtd)`"
+      },
+      {
+        "id": "B",
+        "texto": "`media = str(soma / qtd)`"
+      },
+      {
+        "id": "C",
+        "texto": "`media = soma / qtd`"
+      },
+      {
+        "id": "D",
+        "texto": "`media = soma // qtd`"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. `int()` trunca o resultado, perdendo justamente as casas decimais desejadas.",
+      "B": "Incorreta. O resultado seria um texto, o que impede novos cálculos sem outra conversão.",
+      "C": "Correta. Em Python 3, o operador `/` sempre realiza divisão real e retorna float, mesmo entre inteiros. Ex.: `7 / 2` resulta em 3.5.",
+      "D": "Incorreta. `//` é a divisão inteira (de piso) e descarta a parte decimal: `7 // 2` resulta em 3."
+    }
+  },
+  {
+    "id": 51,
+    "topico_id": 6,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise os nomes de variável abaixo. Qual deles é válido em Python e segue as convenções do PEP 8?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`2_usuario = \"Ana\"`"
+      },
+      {
+        "id": "B",
+        "texto": "`NomeUsuario = \"Ana\"`"
+      },
+      {
+        "id": "C",
+        "texto": "`nome-usuario = \"Ana\"`"
+      },
+      {
+        "id": "D",
+        "texto": "`nome_usuario = \"Ana\"`"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. Identificadores não podem começar com dígito; a linha gera SyntaxError.",
+      "B": "Incorreta. É válido, mas CapWords (PascalCase) é a convenção do PEP 8 para nomes de classes, não de variáveis.",
+      "C": "Incorreta. O hífen é interpretado como subtração (`nome - usuario`), e a linha gera SyntaxError por tentar atribuir um valor a uma expressão.",
+      "D": "Correta. O PEP 8 recomenda snake_case para variáveis: letras minúsculas com palavras separadas por sublinhado, formando um nome que descreve o conteúdo."
+    }
+  },
+  {
+    "id": 52,
+    "topico_id": 6,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "O código abaixo deveria liberar o acesso apenas para os usuários \"admin\" e \"root\". O que será impresso?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "usuario = \"visitante\"\nif usuario == \"admin\" or \"root\":\n    print(\"Acesso liberado\")\nelse:\n    print(\"Acesso negado\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "SyntaxError"
+      },
+      {
+        "id": "B",
+        "texto": "TypeError: `or` não pode ser usado com strings"
+      },
+      {
+        "id": "C",
+        "texto": "Acesso negado"
+      },
+      {
+        "id": "D",
+        "texto": "Acesso liberado"
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. A expressão é sintaticamente válida; o erro é de lógica, não de sintaxe.",
+      "B": "Incorreta. `or` aceita operandos de qualquer tipo e retorna um deles conforme o seu valor lógico.",
+      "C": "Incorreta. Essa seria a saída esperada pela intenção do programador, mas a condição não compara `usuario` com \"root\".",
+      "D": "Correta. A condição é interpretada como `(usuario == \"admin\") or \"root\"`. A primeira parte é False, então `or` retorna \"root\", uma string não vazia (truthy); a condição é sempre verdadeira. O correto seria `usuario == \"admin\" or usuario == \"root\"`."
+    }
+  },
+  {
+    "id": 53,
+    "topico_id": 6,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "Analise o código abaixo. O que acontece ao executá-lo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "nota = 8\nif nota >= 7:\n    print(\"Aprovado\")\n      print(\"Parabéns!\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Imprime \"Aprovado\" e \"Parabéns!\"."
+      },
+      {
+        "id": "B",
+        "texto": "Imprime apenas \"Aprovado\"."
+      },
+      {
+        "id": "C",
+        "texto": "Gera IndentationError, pois linhas do mesmo bloco têm recuos diferentes."
+      },
+      {
+        "id": "D",
+        "texto": "O Python ignora os espaços extras e executa normalmente."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. O código nem chega a executar: o problema de indentação é detectado antes da execução.",
+      "B": "Incorreta. Nenhuma linha é executada, pois o arquivo não é compilado com a indentação inconsistente.",
+      "C": "Correta. Em Python, a indentação define os blocos. A última linha usa 6 espaços em vez de 4, gerando `IndentationError: unexpected indent`. O PEP 8 recomenda sempre 4 espaços por nível.",
+      "D": "Incorreta. Os espaços no início da linha são significativos em Python; recuos inconsistentes não são ignorados."
+    }
+  },
+  {
+    "id": 54,
+    "topico_id": 6,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "O código abaixo deveria calcular a média de duas notas. Analise a execução: qual é o resultado e que tipo de erro ele apresenta?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "nota1 = 8\nnota2 = 6\nmedia = nota1 + nota2 / 2\nprint(media)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Imprime 11; é um erro de execução (TypeError)."
+      },
+      {
+        "id": "B",
+        "texto": "Imprime 7.0; o código está correto."
+      },
+      {
+        "id": "C",
+        "texto": "Imprime 11.0; é um erro lógico: o programa executa sem falhas, mas o resultado está errado."
+      },
+      {
+        "id": "D",
+        "texto": "Lança SyntaxError por falta de parênteses."
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. Não há exceção, e o resultado é float (11.0), pois `/` sempre retorna float.",
+      "B": "Incorreta. A divisão tem precedência sobre a soma, então apenas `nota2` é dividida por 2.",
+      "C": "Correta. `nota2 / 2` é calculado primeiro (3.0) e somado a 8, resultando em 11.0. Nenhuma exceção ocorre, o que caracteriza um erro lógico. A correção é `(nota1 + nota2) / 2`.",
+      "D": "Incorreta. A expressão é sintaticamente válida; os parênteses mudariam o significado, não a validade."
+    }
+  },
+  {
+    "id": 55,
+    "topico_id": 6,
+    "nivel_cognitivo": "ANALISE",
+    "enunciado": "O que será impresso pelo código abaixo?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "x = 5  # x = 10\n# x = 20\nx = x + 1  # soma 1\nprint(x)"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "21"
+      },
+      {
+        "id": "B",
+        "texto": "SyntaxError, pois comentários não podem ficar na mesma linha do código"
+      },
+      {
+        "id": "C",
+        "texto": "6"
+      },
+      {
+        "id": "D",
+        "texto": "11"
+      }
+    ],
+    "alternativa_correta": "C",
+    "justificativas": {
+      "A": "Incorreta. A segunda linha inteira é um comentário; `x = 20` nunca é executado.",
+      "B": "Incorreta. Comentários podem aparecer ao final de uma linha de código (comentários inline); o PEP 8 recomenda ao menos dois espaços antes do `#`.",
+      "C": "Correta. `#` inicia um comentário: tudo o que vem depois dele na linha é ignorado pelo interpretador. Assim, apenas `x = 5`, `x = x + 1` e o `print` são executados.",
+      "D": "Incorreta. `x = 10` está depois do `#` na primeira linha; portanto, é comentário e não é executado."
+    }
+  },
+  {
+    "id": 56,
+    "topico_id": 6,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Um desenvolvedor escreveu o código abaixo para verificar a maioridade. Qual análise está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código",
+        "linguagem": "python",
+        "conteudo": "idade = int(input(\"Idade: \"))\nmaior = True if idade >= 18 else False\nif maior == True:\n    print(\"Maior de idade\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O código está correto e bem escrito."
+      },
+      {
+        "id": "B",
+        "texto": "Funciona, mas é redundante: `True if cond else False` equivale a `cond`, e `if maior == True` a `if maior`."
+      },
+      {
+        "id": "C",
+        "texto": "Lança SyntaxError, pois `True if` não é sintaxe válida."
+      },
+      {
+        "id": "D",
+        "texto": "Está incorreto, pois `int(input(...))` não trata erros de digitação."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. O código funciona, mas possui redundâncias que contrariam as boas práticas de Python.",
+      "B": "Correta. `True if idade >= 18 else False` é o mesmo que `idade >= 18`, e `if maior == True:` pode ser escrito como `if maior:`. Versão enxuta: `maior = idade >= 18` e `if maior:`.",
+      "C": "Incorreta. A expressão condicional `True if cond else False` é sintaticamente válida, apenas desnecessária.",
+      "D": "Incorreta. É uma observação válida sobre robustez, mas não torna o código incorreto para entradas válidas; o problema evidente no trecho é a redundância."
+    }
+  },
+  {
+    "id": 57,
+    "topico_id": 6,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual dos trechos abaixo faz o uso mais adequado de comentários?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "# multiplica x por 2\nx = x * 2"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "# dobra o valor para compensar a perda de precisão na conversão\nx = x * 2"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código A, pois todo comentário deve descrever o que o código faz."
+      },
+      {
+        "id": "B",
+        "texto": "O Código B, pois o comentário explica o porquê, e não o que já é óbvio no código."
+      },
+      {
+        "id": "C",
+        "texto": "São equivalentes, pois comentários são sempre úteis."
+      },
+      {
+        "id": "D",
+        "texto": "Nenhum dos dois, pois o código deve ser autoexplicativo e dispensar comentários."
+      }
+    ],
+    "alternativa_correta": "B",
+    "justificativas": {
+      "A": "Incorreta. O comentário do Código A descreve o óbvio: qualquer leitor vê que `* 2` dobra o valor. Isso é ruído, não documentação útil.",
+      "B": "Correta. Bons comentários explicam o raciocínio e o contexto, não o que o código já expressa. O Código B explica o motivo da multiplicação, que não é evidente.",
+      "C": "Incorreta. Comentários que repetem o código adicionam ruído e tendem a ficar desatualizados quando o código muda.",
+      "D": "Incorreta. Comentários continuam necessários para explicar lógica não óbvia, decisões de projeto e regras de negócio."
+    }
+  },
+  {
+    "id": 58,
+    "topico_id": 6,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Um sistema de login precisa verificar se o usuário digitou um nome não vazio e uma senha com pelo menos 8 caracteres. Qual avaliação dos códigos abaixo está correta?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "usuario = input(\"Usuário: \")\nsenha = input(\"Senha: \")\nif usuario and len(senha) >= 8:\n    print(\"Login válido\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "usuario = input(\"Usuário: \")\nsenha = input(\"Senha: \")\nif len(usuario) and len(senha) >= 8:\n    print(\"Login válido\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "Ambos funcionam, mas o Código A é preferível: `if usuario` testa a string vazia de forma idiomática."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos são equivalentes em todos os aspectos, inclusive legibilidade."
+      },
+      {
+        "id": "C",
+        "texto": "Ambos estão incorretos; é necessário usar `usuario != \"\"`."
+      },
+      {
+        "id": "D",
+        "texto": "Apenas o Código B está correto; `len()` é obrigatório para verificar strings não vazias."
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Strings vazias são falsy, então `if usuario` já verifica se algo foi digitado. É a forma recomendada pelo PEP 8; o Código B funciona, mas é desnecessariamente verboso.",
+      "B": "Incorreta. Produzem o mesmo resultado, mas não são equivalentes em estilo e legibilidade; o Código A é mais claro.",
+      "C": "Incorreta. `usuario != \"\"` também funciona, mas não é necessário nem é a forma mais idiomática.",
+      "D": "Incorreta. `len(usuario)` funciona (0 é falsy), mas não é obrigatório nem a forma recomendada pelo PEP 8."
+    }
+  },
+  {
+    "id": 59,
+    "topico_id": 6,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Qual é a forma mais legível e idiomática de reescrever a condição `if nota > 5 and nota < 7:`?",
+    "codigos": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "`if 5 < nota < 7:`"
+      },
+      {
+        "id": "B",
+        "texto": "`if nota in (6):`"
+      },
+      {
+        "id": "C",
+        "texto": "`if 5 < nota and < 7:`"
+      },
+      {
+        "id": "D",
+        "texto": "`if (nota > 5) == True and (nota < 7) == True:`"
+      }
+    ],
+    "alternativa_correta": "A",
+    "justificativas": {
+      "A": "Correta. Python permite comparações encadeadas: `5 < nota < 7` equivale a `5 < nota and nota < 7` e se lê como na matemática.",
+      "B": "Incorreta. `(6)` é apenas o inteiro 6, não uma tupla, então `in` gera TypeError; além disso, notas como 5.5 ficariam de fora.",
+      "C": "Incorreta. Gera SyntaxError: cada lado do `and` precisa ser uma expressão completa.",
+      "D": "Incorreta. Funciona, mas comparar explicitamente com True é redundante e prejudica a legibilidade."
+    }
+  },
+  {
+    "id": 60,
+    "topico_id": 6,
+    "nivel_cognitivo": "AVALIACAO",
+    "enunciado": "Os dois trechos abaixo verificam a aprovação de um aluno. Considerando legibilidade e manutenção, qual avaliação é a mais adequada?",
+    "codigos": [
+      {
+        "rotulo": "Código A",
+        "linguagem": "python",
+        "conteudo": "media = 7.5\nif media >= 7:\n    print(\"Aprovado\")"
+      },
+      {
+        "rotulo": "Código B",
+        "linguagem": "python",
+        "conteudo": "MEDIA_APROVACAO = 7\n\nmedia = 7.5\nif media >= MEDIA_APROVACAO:\n    print(\"Aprovado\")"
+      }
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "texto": "O Código B está incorreto, pois Python não permite nomes de variáveis em maiúsculas."
+      },
+      {
+        "id": "B",
+        "texto": "São equivalentes em qualidade, pois produzem a mesma saída."
+      },
+      {
+        "id": "C",
+        "texto": "O Código A é melhor, pois usa menos linhas."
+      },
+      {
+        "id": "D",
+        "texto": "O Código B é melhor: a constante nomeada explica o significado do 7 e centraliza a regra."
+      }
+    ],
+    "alternativa_correta": "D",
+    "justificativas": {
+      "A": "Incorreta. Nomes em maiúsculas são válidos; o PEP 8 os recomenda justamente para constantes.",
+      "B": "Incorreta. Produzem a mesma saída, mas qualidade de código também envolve legibilidade e facilidade de manutenção.",
+      "C": "Incorreta. Menos linhas não significa mais clareza; o 7 solto no código não explica o que representa.",
+      "D": "Correta. Evitar \"números mágicos\" é uma boa prática: o nome `MEDIA_APROVACAO` documenta a regra, e, se a média mínima mudar, basta alterar uma única linha."
+    }
+  }
+]
