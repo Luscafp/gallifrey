@@ -21,7 +21,7 @@ const ESTILOS = {
 const LETRA = {
   neutra: 'border border-espaco-400 text-espaco-200',
   selecionada: 'bg-cosmo-ciano text-espaco-900',
-  'escolhida-errada': 'bg-erro text-white',
+  'escolhida-errada': 'bg-erro text-espaco-900',
   correta: 'bg-acerto text-espaco-900',
   'correta-escolhida': 'bg-acerto text-espaco-900',
   apagada: 'border border-espaco-500 text-espaco-300',

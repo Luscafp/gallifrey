@@ -377,11 +377,11 @@ export default function Questao() {
       {aviso !== null && (
         <div
           role="status"
-          className="fixed bottom-28 left-1/2 z-40 flex w-[min(92vw,28rem)] -translate-x-1/2 animate-surgir items-start gap-3 rounded-2xl border border-cosmo-creme/40 bg-espaco-800/95 px-4 py-3 text-sm shadow-2xl md:bottom-24"
+          className="fixed bottom-28 left-1/2 z-40 flex w-[min(92vw,28rem)] -translate-x-1/2 animate-surgir items-start gap-3 rounded-2xl border border-cosmo-lilas/40 bg-espaco-800/95 px-4 py-3 text-sm shadow-2xl md:bottom-24"
         >
-          <Eye className="mt-0.5 h-5 w-5 shrink-0 text-cosmo-creme" aria-hidden />
+          <Eye className="mt-0.5 h-5 w-5 shrink-0 text-cosmo-lilas" aria-hidden />
           <p className="text-espaco-200">
-            <strong className="text-cosmo-creme">Não pisque!</strong> Você ficou {plural(aviso, 'segundo')} fora da
+            <strong className="text-cosmo-lilas">Não pisque!</strong> Você ficou {plural(aviso, 'segundo')} fora da
             aba —{' '}
             {config.pausarCronometroAbaOculta
               ? 'o cronômetro exibido foi pausado, mas o tempo fora da aba é registrado.'

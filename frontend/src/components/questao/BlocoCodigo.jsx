@@ -5,9 +5,9 @@ const CORES = {
   palavra: 'text-cosmo-ciano',
   embutida: 'text-sky-300',
   texto: 'text-emerald-300',
-  numero: 'text-orange-300',
+  numero: 'text-indigo-300',
   comentario: 'text-espaco-300 italic',
-  operador: 'text-cosmo-magenta/90',
+  operador: 'text-cosmo-lilas/90',
   nome: 'text-cosmo-gelo',
   outro: 'text-espaco-200',
 }

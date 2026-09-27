@@ -13,7 +13,10 @@
  *   primária #51D4FE · secundária #EDF3F8 · terciária #141E54 · quaternária #263268
  *   destaques #FF5EFF (magenta) e #FFF8B7 (amarelo claro)
  * Acrescidos de tons de "espaço profundo" usados no protótipo do Gallifrey
- * e do azul TARDIS / laranja do céu de Gallifrey para as referências a Doctor Who.
+ * e do azul TARDIS para as referências a Doctor Who.
+ * A interface fica em tons frios e suaves: nada de laranja/vermelho saturado.
+ * Magenta e creme da Cosmo ficam registrados, mas os destaques usam o lilás
+ * (versão suave do magenta) para não destoar do azul/ciano.
  */
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -28,6 +31,7 @@
   --color-cosmo-anil: #263268;
   --color-cosmo-magenta: #ff5eff;
   --color-cosmo-creme: #fff8b7;
+  --color-cosmo-lilas: #d4b8ff;
 
   /* Espaço profundo (fundos e superfícies) */
   --color-espaco-950: #050a24;
@@ -44,14 +48,13 @@
   /* Estados */
   --color-acerto: #34d399;
   --color-acerto-escuro: #0f3b3a;
-  --color-erro: #f87171;
-  --color-erro-escuro: #3d1630;
-  --color-atencao: #fb923c;
+  --color-erro: #f29bbd;
+  --color-erro-escuro: #37173d;
+  --color-atencao: #a5b4fc;
 
   /* Doctor Who */
   --color-tardis: #1d4e9e;
   --color-tardis-claro: #3b82d6;
-  --color-gallifrey: #ff8a3d;
 
   --shadow-brilho: 0 0 24px -4px rgb(81 212 254 / 0.55);
   --shadow-brilho-forte: 0 0 36px -2px rgb(81 212 254 / 0.8);

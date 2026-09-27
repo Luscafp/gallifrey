@@ -234,7 +234,7 @@ export default function ConfigurarMissao() {
               Iniciar Sessão
             </Botao>
             <p className="text-center text-xs text-espaco-300">
-              <span className="font-display tracking-wider text-gallifrey">Geronimo!</span> — o cronômetro
+              <span className="font-display tracking-wider text-cosmo-lilas">Geronimo!</span> — o cronômetro
               de cada questão começa quando ela aparece na tela.
             </p>
           </div>

@@ -12,7 +12,7 @@ const VARIANTES = {
   fantasma:
     'text-espaco-200 hover:text-white underline-offset-4 hover:underline disabled:opacity-50',
   perigo:
-    'bg-erro/90 text-white font-semibold hover:bg-erro disabled:opacity-50',
+    'bg-erro/90 text-espaco-900 font-semibold hover:bg-erro disabled:opacity-50',
 }
 
 const TAMANHOS = {

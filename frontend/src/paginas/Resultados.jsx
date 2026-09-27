@@ -135,7 +135,7 @@ function Heroi({ resultado }) {
           </strong>{' '}
           de aproveitamento · <span className="font-semibold text-cosmo-ciano">{msg.titulo}</span> {msg.texto}
         </p>
-        <span className="rounded-full border border-cosmo-creme/40 bg-cosmo-creme/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cosmo-creme">
+        <span className="rounded-full border border-cosmo-lilas/40 bg-cosmo-lilas/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cosmo-lilas">
           Patente: {msg.patente}
         </span>
         {encerrada && (

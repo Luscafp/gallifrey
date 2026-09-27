@@ -41,10 +41,10 @@ function hash(texto) {
 
 /**
  * Cor da barra de desempenho — mesma escala do protótipo:
- * verde ≥ 80%, ciano ≥ 60%, laranja abaixo disso.
+ * verde ≥ 80%, ciano ≥ 60%, lavanda abaixo disso (tons frios, sem laranja).
  */
 export function corDoPercentual(p) {
   if (p >= 80) return { barra: 'from-emerald-400 to-acerto', texto: 'text-acerto' }
   if (p >= 60) return { barra: 'from-sky-400 to-cosmo-ciano', texto: 'text-cosmo-ciano' }
-  return { barra: 'from-orange-500 to-amber-300', texto: 'text-atencao' }
+  return { barra: 'from-indigo-400 to-atencao', texto: 'text-atencao' }
 }

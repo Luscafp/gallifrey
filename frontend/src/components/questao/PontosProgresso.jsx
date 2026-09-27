@@ -36,7 +36,7 @@ export function PontosProgresso({ total, respostas, atual = null, maxVisiveis = 
                   correta === true
                     ? 'bg-acerto text-espaco-900 ring-acerto/60'
                     : correta === false
-                      ? 'bg-erro text-white ring-erro/60'
+                      ? 'bg-erro text-espaco-900 ring-erro/60'
                       : 'bg-cosmo-ciano text-espaco-900 ring-cosmo-ciano/60'
                 }`}
               >

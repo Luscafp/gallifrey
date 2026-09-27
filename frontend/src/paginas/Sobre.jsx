@@ -134,7 +134,7 @@ export default function Sobre() {
               na TARDIS. Aqui, cada sessão é uma viagem e o tempo é justamente um dos dados que mais importam.
             </p>
             <p className="mt-3 leading-relaxed text-espaco-200">
-              E, como a TARDIS, o Gallifrey é <strong className="text-gallifrey">maior por dentro</strong>: parece
+              E, como a TARDIS, o Gallifrey é <strong className="text-cosmo-lilas">maior por dentro</strong>: parece
               só um quiz, mas carrega muita informação sobre como você aprende.
             </p>
           </div>

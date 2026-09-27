@@ -23,7 +23,7 @@ export function PainelFeedback({ correta, escolhida, justificativas, tempoGastoS
         <h2 className={`text-lg font-semibold ${correta ? 'text-acerto' : 'text-erro'}`}>
           {correta ? 'Resposta correta!' : 'Resposta incorreta'}
         </h2>
-        {correta && <span className="text-sm font-medium text-cosmo-creme">Fantástico!</span>}
+        {correta && <span className="text-sm font-medium text-cosmo-lilas">Fantástico!</span>}
         {tempoGastoSegundos !== undefined && (
           <span className="ml-auto rounded-full border border-espaco-500 px-2.5 py-0.5 text-xs text-espaco-200">
             {formatarDuracao(tempoGastoSegundos)} nesta questão
@@ -39,7 +39,7 @@ export function PainelFeedback({ correta, escolhida, justificativas, tempoGastoS
           const cor = j.correta
             ? 'bg-acerto text-espaco-900'
             : j.alternativa === escolhida
-              ? 'bg-erro text-white'
+              ? 'bg-erro text-espaco-900'
               : 'bg-espaco-600 text-espaco-200'
           return (
             <li key={j.alternativa} className="flex items-start gap-3">

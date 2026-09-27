@@ -36,7 +36,7 @@ export function Cabecalho({ compacto = false, children }) {
           {config.usarMock && (
             <span
               title="Backend simulado no navegador (VITE_API_MOCK=true)"
-              className="hidden rounded-md bg-cosmo-magenta/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-cosmo-magenta/80 sm:inline"
+              className="hidden rounded-md bg-cosmo-lilas/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-cosmo-lilas/80 sm:inline"
             >
               dados simulados
             </span>

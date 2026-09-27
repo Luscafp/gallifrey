@@ -55,7 +55,7 @@ export function LinhaSessao({ sessao, indice }) {
         </span>
 
         {emAndamento ? (
-          <span className="whitespace-nowrap rounded-full border border-cosmo-magenta/50 px-3 py-1 text-xs font-semibold text-cosmo-magenta sm:col-span-3">
+          <span className="whitespace-nowrap rounded-full border border-cosmo-lilas/50 px-3 py-1 text-xs font-semibold text-cosmo-lilas sm:col-span-3">
             Em andamento
           </span>
         ) : (

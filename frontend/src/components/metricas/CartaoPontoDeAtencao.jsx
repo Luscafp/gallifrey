@@ -20,9 +20,9 @@ export function CartaoPontoDeAtencao({ ponto, sessaoId }) {
     )
   }
   return (
-    <section className="flex flex-col gap-3 rounded-2xl border border-erro/60 bg-erro-escuro/30 p-5">
+    <section className="flex flex-col gap-3 rounded-2xl border border-atencao/50 bg-atencao/10 p-5">
       <div className="flex items-start gap-4">
-        <TriangleAlert className="h-9 w-9 shrink-0 text-erro" aria-hidden />
+        <TriangleAlert className="h-9 w-9 shrink-0 text-atencao" aria-hidden />
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-cosmo-ciano">Pontos de atenção</h3>
           <p className="mt-2 font-semibold text-white">Assunto com mais erros: {ponto.nome}</p>
