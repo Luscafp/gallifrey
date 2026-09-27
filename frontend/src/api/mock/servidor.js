@@ -23,7 +23,6 @@ import { config } from '../../config.js'
 
 const CHAVE_STORAGE = 'gallifrey_mock_v1'
 const LETRAS = ['A', 'B', 'C', 'D']
-const NIVEIS_VALIDOS = ['ANALISE', 'AVALIACAO', 'TODOS']
 
 class ErroHttp extends Error {
   constructor(status, codigo, mensagem, detalhes) {
@@ -157,7 +156,6 @@ export function criarServidorMock(opcoes = {}) {
       status: sessao.status,
       data_inicio: sessao.data_inicio,
       data_fim: sessao.data_fim,
-      nivel_cognitivo: sessao.nivel_cognitivo,
       topicos: topicosDaSessao(sessao),
       todos_topicos: sessao.topico_ids.length === topicos.length,
       num_questoes_configuradas: sessao.num_questoes_configuradas,
@@ -173,7 +171,6 @@ export function criarServidorMock(opcoes = {}) {
       status: sessao.status,
       data_inicio: sessao.data_inicio,
       data_fim: sessao.data_fim,
-      nivel_cognitivo: sessao.nivel_cognitivo,
       topicos: topicosDaSessao(sessao),
       todos_topicos: sessao.topico_ids.length === topicos.length,
       num_questoes_configuradas: sessao.num_questoes_configuradas,
@@ -184,15 +181,11 @@ export function criarServidorMock(opcoes = {}) {
     }
   }
 
-  /** Sorteia o lote: filtra por tópico/nível, prioriza questões inéditas e intercala os tópicos. */
-  function sortearLote(topicoIds, nivel, quantidade) {
+  /** Sorteia o lote: filtra por tópico (todos os níveis), prioriza questões inéditas e intercala os tópicos. */
+  function sortearLote(topicoIds, quantidade) {
     const jaRespondidas = new Set(db.respostas.map((r) => r.questao_id))
     const porTopico = topicoIds.map((tid) =>
-      embaralhar(
-        questoes.filter(
-          (q) => q.topico_id === tid && (nivel === 'TODOS' || q.nivel_cognitivo === nivel),
-        ),
-      ).sort((a, b) => Number(jaRespondidas.has(a.id)) - Number(jaRespondidas.has(b.id))),
+      embaralhar(questoes.filter((q) => q.topico_id === tid)).sort((a, b) => Number(jaRespondidas.has(a.id)) - Number(jaRespondidas.has(b.id))),
     )
     const lote = []
     let rodada = 0
@@ -256,24 +249,18 @@ export function criarServidorMock(opcoes = {}) {
 
   function postSessao(corpo) {
     const topicoIds = Array.isArray(corpo?.topico_ids) ? [...new Set(corpo.topico_ids)] : []
-    const nivel = corpo?.nivel_cognitivo
     const numQuestoes = Number(corpo?.num_questoes)
     const detalhes = {}
     if (!topicoIds.length) detalhes.topico_ids = 'Selecione pelo menos um tópico.'
     if (topicoIds.some((id) => !topicosPorId.has(id))) detalhes.topico_ids = 'Tópico inexistente.'
-    if (!NIVEIS_VALIDOS.includes(nivel)) detalhes.nivel_cognitivo = 'Nível cognitivo inválido.'
     if (!Number.isInteger(numQuestoes) || numQuestoes < 1 || numQuestoes > 50)
       detalhes.num_questoes = 'Informe entre 1 e 50 questões.'
     if (Object.keys(detalhes).length)
       throw new ErroHttp(422, 'PARAMETROS_INVALIDOS', 'Parâmetros da missão inválidos.', detalhes)
 
-    const lote = sortearLote(topicoIds, nivel, numQuestoes)
+    const lote = sortearLote(topicoIds, numQuestoes)
     if (!lote.length)
-      throw new ErroHttp(
-        422,
-        'SEM_QUESTOES',
-        'Não há questões cadastradas para essa combinação de tópicos e nível cognitivo.',
-      )
+      throw new ErroHttp(422, 'SEM_QUESTOES', 'Não há questões cadastradas para os tópicos selecionados.')
 
     // Uma sessão EM_ANDAMENTO anterior é considerada abandonada ao iniciar outra.
     for (const s of sessoesDoAluno()) {
@@ -286,7 +273,6 @@ export function criarServidorMock(opcoes = {}) {
       data_inicio: iso(agora()),
       data_fim: null,
       status: 'EM_ANDAMENTO',
-      nivel_cognitivo: nivel,
       topico_ids: topicoIds.slice().sort((a, b) => a - b),
       num_questoes_configuradas: numQuestoes,
       questao_ids: lote,

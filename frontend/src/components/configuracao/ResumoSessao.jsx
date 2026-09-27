@@ -1,6 +1,6 @@
-import { Brain, Clock, FileText, ListOrdered, Star, Target } from 'lucide-react'
+import { Clock, FileText, ListOrdered, Star, Target } from 'lucide-react'
 import { imgAstronautaEspiando } from '../cosmo/imagens.js'
-import { formatarData, formatarDuracao, ROTULO_NIVEL } from '../../lib/formatadores.js'
+import { formatarData, formatarDuracao } from '../../lib/formatadores.js'
 
 /**
  * Coluna "Resumo da sessão" + "Última sessão" da Configurar Missão.
@@ -9,7 +9,6 @@ import { formatarData, formatarDuracao, ROTULO_NIVEL } from '../../lib/formatado
  * @param {{
  *   topicosSelecionados: {id:any, nome:string}[],
  *   totalTopicos: number,
- *   nivel: string,
  *   numQuestoes: number,
  *   minutosEstimados: number,
  *   ultimaSessao: import('../../api/tipos.js').SessaoResumo | null | undefined,
@@ -19,7 +18,6 @@ import { formatarData, formatarDuracao, ROTULO_NIVEL } from '../../lib/formatado
 export function ResumoSessao({
   topicosSelecionados,
   totalTopicos,
-  nivel,
   numQuestoes,
   minutosEstimados,
   ultimaSessao,
@@ -48,7 +46,6 @@ export function ResumoSessao({
               </span>
             )}
           </Linha>
-          <Linha icone={Brain} rotulo="Nível cognitivo" valor={ROTULO_NIVEL[nivel]} />
           <Linha icone={ListOrdered} rotulo="Questões" valor={numQuestoes} />
           <Linha icone={Clock} rotulo="Tempo estimado" valor={`~${minutosEstimados} minutos`} />
         </dl>

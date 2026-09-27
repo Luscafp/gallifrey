@@ -59,7 +59,7 @@ export default function Sobre() {
           escolha — sobre a disciplina de <strong className="text-white">Algoritmos I</strong> do curso ABI
           Ciência da Computação e IA. As questões são organizadas por <strong className="text-white">tópico</strong>{' '}
           (Variáveis, Condicionais, Operadores…) e por <strong className="text-white">nível cognitivo</strong> da
-          Taxonomia de Bloom (Análise e Avaliação).
+          Taxonomia de Bloom (Análise e Avaliação) — toda missão mistura questões dos dois níveis.
         </p>
       </header>
 
@@ -68,7 +68,7 @@ export default function Sobre() {
           Como funciona
         </h2>
         <Passo numero="1" icone={Layers} titulo="Configure a missão">
-          Escolha os tópicos, o nível cognitivo e quantas questões quer responder.
+          Escolha os tópicos e quantas questões quer responder.
         </Passo>
         <Passo numero="2" icone={Target} titulo="Responda e aprenda">
           Cada resposta traz a justificativa de todas as alternativas na hora.

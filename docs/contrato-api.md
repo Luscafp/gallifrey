@@ -20,7 +20,7 @@ exatamente este contrato. Ele é a referência executável: na dúvida sobre um 
 | Durações | Sempre **segundos inteiros**, campos com sufixo `_segundos`. |
 | Percentuais | Número de 0 a 100, até 1 casa decimal (ex.: `78.5`). |
 | IDs | Opacos para o frontend (inteiro ou string). |
-| Enums | `nivel_cognitivo`: `ANALISE`, `AVALIACAO` (na questão) e `TODOS` (só no filtro da sessão). `status` da sessão: `EM_ANDAMENTO`, `CONCLUIDA`, `ENCERRADA_MANUALMENTE`. `periodo`: `7d`, `30d`, `tudo`. Alternativas: `A`, `B`, `C`, `D`. |
+| Enums | `nivel_cognitivo` (só na questão): `ANALISE`, `AVALIACAO`. A sessão não filtra por nível: toda sessão mistura todos os níveis. `status` da sessão: `EM_ANDAMENTO`, `CONCLUIDA`, `ENCERRADA_MANUALMENTE`. `periodo`: `7d`, `30d`, `tudo`. Alternativas: `A`, `B`, `C`, `D`. |
 | Vazio | Quando "não há" o recurso (ex.: nenhuma sessão em andamento), responder **`204 No Content`**. |
 
 ### Formato de erro
@@ -101,7 +101,6 @@ Resumo (atende ao mínimo exigido em *Requisitos Técnicos §1.2*: iniciar sess�
 {
   "id": 11, "numero": 11, "status": "CONCLUIDA",
   "data_inicio": "2026-04-18T14:02:00Z", "data_fim": "2026-04-18T14:14:10Z",
-  "nivel_cognitivo": "TODOS",
   "topicos": [ { "id": 1, "nome": "Variáveis" } ],
   "todos_topicos": false,
   "num_questoes_configuradas": 10,
@@ -121,13 +120,13 @@ Permite retomar uma sessão cuja aba foi fechada. Formato `Sessao` na seção 2.
 ### 2.5 `POST /sessoes` — Iniciar Sessão
 
 ```json
-{ "topico_ids": [1, 2, 4], "nivel_cognitivo": "TODOS", "num_questoes": 10 }
+{ "topico_ids": [1, 2, 4], "num_questoes": 10 }
 ```
 
 Regras (*Doc. Funcional §3.2*, *Critérios §3.1*):
 - Só aqui a sessão é criada e passa a contar em `num_sessoes`. Configurar parâmetros **não** gera registro.
-- `topico_ids` com pelo menos 1 tópico; `nivel_cognitivo` ∈ `ANALISE | AVALIACAO | TODOS`; `num_questoes` inteiro (frontend oferece 5, 10, 15, 20).
-- Registra `data_inicio` (UTC), grava `SESSAO_TOPICO` e sorteia o **lote** de questões filtrando por tópico e nível.
+- `topico_ids` com pelo menos 1 tópico; `num_questoes` inteiro (frontend oferece 5, 10, 15, 20). Não há escolha de nível cognitivo.
+- Registra `data_inicio` (UTC), grava `SESSAO_TOPICO` e sorteia o **lote** de questões filtrando apenas por tópico — questões de **todos** os níveis cognitivos entram no sorteio.
   Recomendado: intercalar tópicos e priorizar questões ainda não respondidas pelo aluno.
 - Se houver menos questões que `num_questoes`, o lote fica menor (`progresso.total` reflete o real). Se não houver nenhuma → `422 SEM_QUESTOES`.
 - Se já houver uma sessão `EM_ANDAMENTO`, o mock a encerra como `ENCERRADA_MANUALMENTE` (sugestão; o backend pode escolher outra política).
@@ -140,7 +139,6 @@ Resposta `201` → `Sessao`.
 {
   "id": 13, "numero": 13, "status": "EM_ANDAMENTO",
   "data_inicio": "2026-04-20T17:32:00Z", "data_fim": null,
-  "nivel_cognitivo": "TODOS",
   "topicos": [ { "id": 1, "nome": "Variáveis" }, { "id": 4, "nome": "Condicionais SE" } ],
   "todos_topicos": false,
   "num_questoes_configuradas": 20,

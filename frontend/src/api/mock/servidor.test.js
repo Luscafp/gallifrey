@@ -37,47 +37,41 @@ describe('POST /sessoes (Critérios §3.1)', () => {
   })
 
   it('exige ao menos um tópico', () => {
-    const r = api.chamar('POST', '/sessoes', { topico_ids: [], nivel_cognitivo: 'TODOS', num_questoes: 5 })
+    const r = api.chamar('POST', '/sessoes', { topico_ids: [], num_questoes: 5 })
     expect(r.status).toBe(422)
     expect(r.corpo.erro.detalhes.topico_ids).toBeTruthy()
-  })
-
-  it('valida o nível cognitivo', () => {
-    const r = api.chamar('POST', '/sessoes', { topico_ids: [1], nivel_cognitivo: 'CRIACAO', num_questoes: 5 })
-    expect(r.status).toBe(422)
   })
 
   it('só incrementa o nº de sessões ao iniciar', () => {
     expect(api.chamar('GET', '/alunos/me').corpo.estatisticas.num_sessoes).toBe(0)
     api.chamar('GET', '/topicos') // configurar não cria nada
-    const r = api.chamar('POST', '/sessoes', { topico_ids: [1, 2], nivel_cognitivo: 'TODOS', num_questoes: 5 })
+    const r = api.chamar('POST', '/sessoes', { topico_ids: [1, 2], num_questoes: 5 })
     expect(r.status).toBe(201)
     expect(r.corpo.numero).toBe(1)
     expect(r.corpo.data_inicio).toBe('2026-04-20T12:00:00.000Z')
     expect(api.chamar('GET', '/alunos/me').corpo.estatisticas.num_sessoes).toBe(1)
   })
 
-  it('filtra o lote por tópico e nível', () => {
-    const { corpo } = api.chamar('POST', '/sessoes', {
-      topico_ids: [4],
-      nivel_cognitivo: 'ANALISE',
-      num_questoes: 20,
-    })
+  it('filtra o lote por tópico e mistura todos os níveis cognitivos', () => {
+    const { corpo } = api.chamar('POST', '/sessoes', { topico_ids: [4], num_questoes: 20 })
     const ids = api.srv.estado.sessoes.find((s) => s.id === corpo.id).questao_ids
-    expect(ids.length).toBe(5) // só 5 questões de Condicionais em Análise no banco de exemplo
-    expect(corpo.progresso.total).toBe(5)
+    expect(ids.length).toBe(10) // só 10 questões de Condicionais (5 Análise + 5 Avaliação) no banco de exemplo
+    expect(corpo.progresso.total).toBe(10)
+    expect(corpo).not.toHaveProperty('nivel_cognitivo')
+    const niveis = new Set()
     for (const id of ids) {
       const q = questoes.find((x) => x.id === id)
       expect(q.topico_id).toBe(4)
-      expect(q.nivel_cognitivo).toBe('ANALISE')
+      niveis.add(q.nivel_cognitivo)
     }
+    expect([...niveis].sort()).toEqual(['ANALISE', 'AVALIACAO'])
   })
 })
 
 describe('Fluxo de resolução (Critérios §3.2)', () => {
   it('não envia gabarito antes da resposta e calcula o tempo no servidor', () => {
     const api = montar()
-    const sessao = api.chamar('POST', '/sessoes', { topico_ids: [1], nivel_cognitivo: 'TODOS', num_questoes: 3 }).corpo
+    const sessao = api.chamar('POST', '/sessoes', { topico_ids: [1], num_questoes: 3 }).corpo
     const exibida = api.chamar('POST', `/sessoes/${sessao.id}/questoes/proxima`).corpo
     expect(exibida.ordem).toBe(1)
     expect(JSON.stringify(exibida)).not.toMatch(/alternativa_correta|justificativa/)
@@ -105,7 +99,7 @@ describe('Fluxo de resolução (Critérios §3.2)', () => {
 
   it('rejeita resposta duplicada', () => {
     const api = montar()
-    const s = api.chamar('POST', '/sessoes', { topico_ids: [1], nivel_cognitivo: 'TODOS', num_questoes: 2 }).corpo
+    const s = api.chamar('POST', '/sessoes', { topico_ids: [1], num_questoes: 2 }).corpo
     const q = api.chamar('POST', `/sessoes/${s.id}/questoes/proxima`).corpo.questao
     const corpo = { questao_id: q.id, alternativa_escolhida: 'A', tempo_cliente_segundos: 1, tempo_oculto_segundos: 0 }
     expect(api.chamar('POST', `/sessoes/${s.id}/respostas`, corpo).status).toBe(201)
@@ -114,7 +108,7 @@ describe('Fluxo de resolução (Critérios §3.2)', () => {
 
   it('encerrar antes do fim preserva as respostas e calcula só com elas', () => {
     const api = montar()
-    const s = api.chamar('POST', '/sessoes', { topico_ids: [1, 4], nivel_cognitivo: 'TODOS', num_questoes: 10 }).corpo
+    const s = api.chamar('POST', '/sessoes', { topico_ids: [1, 4], num_questoes: 10 }).corpo
     const tempos = [40, 60, 20]
     tempos.forEach((t, i) => {
       const q = api.chamar('POST', `/sessoes/${s.id}/questoes/proxima`).corpo.questao
@@ -147,7 +141,7 @@ describe('Resultados e histórico (Critérios §3.3 e §3.4)', () => {
   it('compara com a sessão finalizada imediatamente anterior', () => {
     const api = montar()
     const jogar = (tempo) => {
-      const s = api.chamar('POST', '/sessoes', { topico_ids: [2], nivel_cognitivo: 'TODOS', num_questoes: 2 }).corpo
+      const s = api.chamar('POST', '/sessoes', { topico_ids: [2], num_questoes: 2 }).corpo
       for (;;) {
         const r = api.chamar('POST', `/sessoes/${s.id}/questoes/proxima`)
         if (r.status === 204) break

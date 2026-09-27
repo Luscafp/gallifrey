@@ -1,8 +1,7 @@
 import { useId, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AlertCircle, ArrowRight, Brain, ChevronRight, Layers, Lock, Rocket, Scale } from 'lucide-react'
+import { AlertCircle, ArrowRight, ChevronRight, Lock, Rocket } from 'lucide-react'
 import { buscarUltimaSessao, iniciarSessao, listarTopicos } from '../api/gallifrey.js'
-import { OpcaoCartao } from '../components/configuracao/OpcaoCartao.jsx'
 import { OverlayMaterializando } from '../components/configuracao/OverlayMaterializando.jsx'
 import { ResumoSessao } from '../components/configuracao/ResumoSessao.jsx'
 import { RotaDePlanetas } from '../components/configuracao/RotaDePlanetas.jsx'
@@ -11,27 +10,6 @@ import { Carregando } from '../components/ui/Carregando.jsx'
 import { EstadoErro } from '../components/ui/EstadoErro.jsx'
 import { NUM_QUESTOES_PADRAO, OPCOES_NUM_QUESTOES, SEGUNDOS_ESTIMADOS_POR_QUESTAO } from '../config.js'
 import { useRecurso } from '../hooks/useRecurso.js'
-
-const NIVEIS = [
-  {
-    valor: 'TODOS',
-    titulo: 'Todos os níveis',
-    descricao: 'Inclui análise e avaliação',
-    icone: Layers,
-  },
-  {
-    valor: 'ANALISE',
-    titulo: 'Análise',
-    descricao: 'Examinar código, prever saídas e comparar soluções',
-    icone: Brain,
-  },
-  {
-    valor: 'AVALIACAO',
-    titulo: 'Avaliação',
-    descricao: 'Julgar qual solução é correta ou melhor e justificar',
-    icone: Scale,
-  },
-]
 
 /** Tempo mínimo do "Materializando TARDIS…" (0 para quem prefere menos movimento). */
 function duracaoMinimaOverlay() {
@@ -42,6 +20,7 @@ function duracaoMinimaOverlay() {
 /**
  * Configurar Missão (fluxo 02). Escolher parâmetros NÃO cria nada no servidor:
  * a sessão só nasce no clique em "Iniciar Sessão" (Critérios de Aceitação §3.1).
+ * Não há filtro de nível cognitivo: toda sessão mistura questões de todos os níveis.
  */
 export default function ConfigurarMissao() {
   const navegar = useNavigate()
@@ -53,7 +32,6 @@ export default function ConfigurarMissao() {
   const topicos = topicosRecurso.dados ?? []
   // null = padrão "todos selecionados" (evita sincronizar estado quando os tópicos chegam)
   const [escolhidos, setEscolhidos] = useState(null)
-  const [nivel, setNivel] = useState('TODOS')
   const [numQuestoes, setNumQuestoes] = useState(NUM_QUESTOES_PADRAO)
   const [enviando, setEnviando] = useState(false)
   const [erroEnvio, setErroEnvio] = useState(null)
@@ -77,7 +55,7 @@ export default function ConfigurarMissao() {
     try {
       const ordenados = topicos.map((t) => t.id).filter((id) => selecionados.includes(id))
       const [sessao] = await Promise.all([
-        iniciarSessao({ topico_ids: ordenados, nivel_cognitivo: nivel, num_questoes: numQuestoes }),
+        iniciarSessao({ topico_ids: ordenados, num_questoes: numQuestoes }),
         new Promise((r) => setTimeout(r, duracaoMinimaOverlay())),
       ])
       navegar(`/missao/${sessao.id}`)
@@ -170,27 +148,7 @@ export default function ConfigurarMissao() {
 
           <fieldset>
             <legend className="mb-4 text-lg font-semibold text-white">
-              <span className="text-cosmo-ciano">2.</span> Nível cognitivo
-            </legend>
-            <div className="grid gap-3">
-              {NIVEIS.map((n) => (
-                <OpcaoCartao
-                  key={n.valor}
-                  nome="nivel_cognitivo"
-                  valor={n.valor}
-                  marcado={nivel === n.valor}
-                  aoSelecionar={setNivel}
-                  titulo={n.titulo}
-                  descricao={n.descricao}
-                  icone={n.icone}
-                />
-              ))}
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend className="mb-4 text-lg font-semibold text-white">
-              <span className="text-cosmo-ciano">3.</span> Quantidade de questões
+              <span className="text-cosmo-ciano">2.</span> Quantidade de questões
             </legend>
             <div className="grid grid-cols-4 gap-1 rounded-2xl border border-espaco-500/70 bg-espaco-850/80 p-1">
               {OPCOES_NUM_QUESTOES.map((n) => (
@@ -245,7 +203,6 @@ export default function ConfigurarMissao() {
             <ResumoSessao
               topicosSelecionados={topicos.filter((t) => selecionados.includes(t.id))}
               totalTopicos={topicos.length}
-              nivel={nivel}
               numQuestoes={numQuestoes}
               minutosEstimados={minutosEstimados}
               ultimaSessao={ultimaRecurso.dados}

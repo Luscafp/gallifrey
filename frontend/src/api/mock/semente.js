@@ -7,26 +7,24 @@ import { DIA_MS } from './metricas.js'
  */
 export function gerarHistoricoDemonstracao(db, { questoes, agora, aleatorio }) {
   const planos = [
-    // [dias atrás, hora, nº questões, tópicos, nível, taxa de acerto alvo, seg. médios, encerrada antes?]
-    [38, 19, 10, [1, 2, 3], 'TODOS', 0.5, 70, false],
-    [33, 21, 10, [1, 2, 3, 4], 'ANALISE', 0.6, 64, false],
-    [27, 9, 15, [1, 2, 3, 4, 5, 6], 'TODOS', 0.55, 66, false],
-    [22, 14, 10, [4, 5], 'AVALIACAO', 0.5, 72, true],
-    [16, 20, 15, [1, 2, 3, 4, 5, 6], 'TODOS', 0.68, 58, false],
-    [11, 10, 10, [3, 4, 6], 'ANALISE', 0.72, 55, false],
-    [6, 16, 20, [1, 2, 3, 4, 5, 6], 'TODOS', 0.78, 51, false],
-    [3, 11, 10, [4, 5], 'TODOS', 0.7, 49, false],
-    [1, 15, 15, [1, 2, 3, 4, 5, 6], 'TODOS', 0.87, 45, false],
+    // [dias atrás, hora, nº questões, tópicos, taxa de acerto alvo, seg. médios, encerrada antes?]
+    [38, 19, 10, [1, 2, 3], 0.5, 70, false],
+    [33, 21, 10, [1, 2, 3, 4], 0.6, 64, false],
+    [27, 9, 15, [1, 2, 3, 4, 5, 6], 0.55, 66, false],
+    [22, 14, 10, [4, 5], 0.5, 72, true],
+    [16, 20, 15, [1, 2, 3, 4, 5, 6], 0.68, 58, false],
+    [11, 10, 10, [3, 4, 6], 0.72, 55, false],
+    [6, 16, 20, [1, 2, 3, 4, 5, 6], 0.78, 51, false],
+    [3, 11, 10, [4, 5], 0.7, 49, false],
+    [1, 15, 15, [1, 2, 3, 4, 5, 6], 0.87, 45, false],
   ]
 
-  for (const [diasAtras, hora, qtd, topicoIds, nivel, taxa, segMedios, encerrada] of planos) {
+  for (const [diasAtras, hora, qtd, topicoIds, taxa, segMedios, encerrada] of planos) {
     const dia = new Date(agora - diasAtras * DIA_MS)
     dia.setHours(hora, Math.floor(aleatorio() * 50), 0, 0)
     let instante = dia.getTime()
 
-    const candidatas = questoes.filter(
-      (q) => topicoIds.includes(q.topico_id) && (nivel === 'TODOS' || q.nivel_cognitivo === nivel),
-    )
+    const candidatas = questoes.filter((q) => topicoIds.includes(q.topico_id))
     const lote = embaralhar(candidatas, aleatorio).slice(0, qtd)
     if (!lote.length) continue
 
@@ -36,7 +34,6 @@ export function gerarHistoricoDemonstracao(db, { questoes, agora, aleatorio }) {
       data_inicio: new Date(instante).toISOString(),
       data_fim: null,
       status: encerrada ? 'ENCERRADA_MANUALMENTE' : 'CONCLUIDA',
-      nivel_cognitivo: nivel,
       topico_ids: topicoIds,
       num_questoes_configuradas: qtd,
       questao_ids: lote.map((q) => q.id),
