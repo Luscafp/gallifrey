@@ -8,7 +8,6 @@ import { config } from '../../config.js'
 const LINKS = [
   { para: '/', rotulo: 'Início', fim: true },
   { para: '/historico', rotulo: 'Histórico' },
-  { para: '/sobre', rotulo: 'Sobre' },
 ]
 
 /**

@@ -81,7 +81,6 @@ src/
 | `/missao/:id/resultado` | Tela de Resultados | resultado da sessão |
 | `/missao/:id/revisao` | Ver todas as questões (`?filtro=erradas`) | respostas da sessão |
 | `/historico` | Histórico de Sessões (`?periodo=7d\|30d\|tudo`) | histórico agregado |
-| `/sobre` | Sobre o Gallifrey e dados coletados | — |
 
 ## Regras de negócio atendidas no frontend
 
