@@ -14,7 +14,7 @@ export function CartaoPontoDeAtencao({ ponto, sessaoId }) {
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-acerto">Pontos de atenção</h3>
           <p className="mt-2 font-semibold text-white">Nenhum erro nesta missão. Fantástico!</p>
-          <p className="mt-1 text-sm text-espaco-200">Que tal aumentar o desafio com mais questões ou novos tópicos?</p>
+          <p className="mt-1 text-sm text-espaco-200">Que tal explorar novos tópicos na próxima missão?</p>
         </div>
       </section>
     )

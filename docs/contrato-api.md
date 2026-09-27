@@ -120,15 +120,17 @@ Permite retomar uma sessão cuja aba foi fechada. Formato `Sessao` na seção 2.
 ### 2.5 `POST /sessoes` — Iniciar Sessão
 
 ```json
-{ "topico_ids": [1, 2, 4], "num_questoes": 10 }
+{ "topico_ids": [1, 2, 4] }
 ```
 
 Regras (*Doc. Funcional §3.2*, *Critérios §3.1*):
 - Só aqui a sessão é criada e passa a contar em `num_sessoes`. Configurar parâmetros **não** gera registro.
-- `topico_ids` com pelo menos 1 tópico; `num_questoes` inteiro (frontend oferece 5, 10, 15, 20). Não há escolha de nível cognitivo.
+- `topico_ids` com pelo menos 1 tópico. O aluno **não** escolhe nível cognitivo nem quantidade de questões.
+- Toda sessão tem **10 questões** (quantidade fixa, definida no backend e gravada em `num_questoes_configuradas`).
+  O frontend exibe esse mesmo valor no resumo (`NUM_QUESTOES_POR_SESSAO` em `frontend/src/config.js`) — manter os dois iguais.
 - Registra `data_inicio` (UTC), grava `SESSAO_TOPICO` e sorteia o **lote** de questões filtrando apenas por tópico — questões de **todos** os níveis cognitivos entram no sorteio.
   Recomendado: intercalar tópicos e priorizar questões ainda não respondidas pelo aluno.
-- Se houver menos questões que `num_questoes`, o lote fica menor (`progresso.total` reflete o real). Se não houver nenhuma → `422 SEM_QUESTOES`.
+- Se houver menos questões que a quantidade fixa, o lote fica menor (`progresso.total` reflete o real). Se não houver nenhuma → `422 SEM_QUESTOES`.
 - Se já houver uma sessão `EM_ANDAMENTO`, o mock a encerra como `ENCERRADA_MANUALMENTE` (sugestão; o backend pode escolher outra política).
 
 Resposta `201` → `Sessao`.

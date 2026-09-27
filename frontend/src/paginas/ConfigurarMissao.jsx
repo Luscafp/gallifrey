@@ -8,8 +8,10 @@ import { RotaDePlanetas } from '../components/configuracao/RotaDePlanetas.jsx'
 import { Botao } from '../components/ui/Botao.jsx'
 import { Carregando } from '../components/ui/Carregando.jsx'
 import { EstadoErro } from '../components/ui/EstadoErro.jsx'
-import { NUM_QUESTOES_PADRAO, OPCOES_NUM_QUESTOES, SEGUNDOS_ESTIMADOS_POR_QUESTAO } from '../config.js'
+import { NUM_QUESTOES_POR_SESSAO, SEGUNDOS_ESTIMADOS_POR_QUESTAO } from '../config.js'
 import { useRecurso } from '../hooks/useRecurso.js'
+
+const MINUTOS_ESTIMADOS = Math.max(1, Math.round((NUM_QUESTOES_POR_SESSAO * SEGUNDOS_ESTIMADOS_POR_QUESTAO) / 60))
 
 /** Tempo mínimo do "Materializando TARDIS…" (0 para quem prefere menos movimento). */
 function duracaoMinimaOverlay() {
@@ -20,7 +22,8 @@ function duracaoMinimaOverlay() {
 /**
  * Configurar Missão (fluxo 02). Escolher parâmetros NÃO cria nada no servidor:
  * a sessão só nasce no clique em "Iniciar Sessão" (Critérios de Aceitação §3.1).
- * Não há filtro de nível cognitivo: toda sessão mistura questões de todos os níveis.
+ * O aluno escolhe só os tópicos: toda sessão mistura questões de todos os níveis cognitivos e tem
+ * quantidade fixa de questões (NUM_QUESTOES_POR_SESSAO), definida pelo backend.
  */
 export default function ConfigurarMissao() {
   const navegar = useNavigate()
@@ -32,13 +35,11 @@ export default function ConfigurarMissao() {
   const topicos = topicosRecurso.dados ?? []
   // null = padrão "todos selecionados" (evita sincronizar estado quando os tópicos chegam)
   const [escolhidos, setEscolhidos] = useState(null)
-  const [numQuestoes, setNumQuestoes] = useState(NUM_QUESTOES_PADRAO)
   const [enviando, setEnviando] = useState(false)
   const [erroEnvio, setErroEnvio] = useState(null)
 
   const selecionados = escolhidos ?? topicos.map((t) => t.id)
   const semTopico = topicos.length > 0 && selecionados.length === 0
-  const minutosEstimados = Math.max(1, Math.round((numQuestoes * SEGUNDOS_ESTIMADOS_POR_QUESTAO) / 60))
 
   function alternarTopico(id) {
     setErroEnvio(null)
@@ -55,7 +56,7 @@ export default function ConfigurarMissao() {
     try {
       const ordenados = topicos.map((t) => t.id).filter((id) => selecionados.includes(id))
       const [sessao] = await Promise.all([
-        iniciarSessao({ topico_ids: ordenados, num_questoes: numQuestoes }),
+        iniciarSessao({ topico_ids: ordenados }),
         new Promise((r) => setTimeout(r, duracaoMinimaOverlay())),
       ])
       navegar(`/missao/${sessao.id}`)
@@ -109,7 +110,7 @@ export default function ConfigurarMissao() {
           <div role="group" aria-labelledby={idTituloTopicos}>
             <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
               <h2 id={idTituloTopicos} className="text-lg font-semibold text-white">
-                <span className="text-cosmo-ciano">1.</span> Tópicos{' '}
+                Tópicos{' '}
                 <span className="text-sm font-normal text-espaco-300">— os planetas da sua rota</span>
               </h2>
               <div className="flex gap-1 text-sm">
@@ -146,34 +147,6 @@ export default function ConfigurarMissao() {
             )}
           </div>
 
-          <fieldset>
-            <legend className="mb-4 text-lg font-semibold text-white">
-              <span className="text-cosmo-ciano">2.</span> Quantidade de questões
-            </legend>
-            <div className="grid grid-cols-4 gap-1 rounded-2xl border border-espaco-500/70 bg-espaco-850/80 p-1">
-              {OPCOES_NUM_QUESTOES.map((n) => (
-                <label
-                  key={n}
-                  className={`cursor-pointer rounded-xl py-2.5 text-center font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-cosmo-ciano ${
-                    numQuestoes === n
-                      ? 'bg-cosmo-ciano text-espaco-900 shadow-brilho'
-                      : 'text-espaco-200 hover:bg-espaco-700 hover:text-white'
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="num_questoes"
-                    value={n}
-                    checked={numQuestoes === n}
-                    onChange={() => setNumQuestoes(n)}
-                    className="sr-only"
-                  />
-                  {n}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-
           <div className="flex flex-col gap-3">
             {erroEnvio && (
               <p role="alert" className="flex items-start gap-2 rounded-xl border border-erro/40 bg-erro-escuro/60 px-4 py-3 text-sm text-erro">
@@ -203,8 +176,8 @@ export default function ConfigurarMissao() {
             <ResumoSessao
               topicosSelecionados={topicos.filter((t) => selecionados.includes(t.id))}
               totalTopicos={topicos.length}
-              numQuestoes={numQuestoes}
-              minutosEstimados={minutosEstimados}
+              numQuestoes={NUM_QUESTOES_POR_SESSAO}
+              minutosEstimados={MINUTOS_ESTIMADOS}
               ultimaSessao={ultimaRecurso.dados}
               carregandoUltima={ultimaRecurso.carregando}
             />

@@ -19,7 +19,7 @@ import {
   unicasERepetidas,
 } from './metricas.js'
 import { gerarHistoricoDemonstracao } from './semente.js'
-import { config } from '../../config.js'
+import { config, NUM_QUESTOES_POR_SESSAO } from '../../config.js'
 
 const CHAVE_STORAGE = 'gallifrey_mock_v1'
 const LETRAS = ['A', 'B', 'C', 'D']
@@ -249,12 +249,10 @@ export function criarServidorMock(opcoes = {}) {
 
   function postSessao(corpo) {
     const topicoIds = Array.isArray(corpo?.topico_ids) ? [...new Set(corpo.topico_ids)] : []
-    const numQuestoes = Number(corpo?.num_questoes)
+    const numQuestoes = NUM_QUESTOES_POR_SESSAO
     const detalhes = {}
     if (!topicoIds.length) detalhes.topico_ids = 'Selecione pelo menos um tópico.'
     if (topicoIds.some((id) => !topicosPorId.has(id))) detalhes.topico_ids = 'Tópico inexistente.'
-    if (!Number.isInteger(numQuestoes) || numQuestoes < 1 || numQuestoes > 50)
-      detalhes.num_questoes = 'Informe entre 1 e 50 questões.'
     if (Object.keys(detalhes).length)
       throw new ErroHttp(422, 'PARAMETROS_INVALIDOS', 'Parâmetros da missão inválidos.', detalhes)
 

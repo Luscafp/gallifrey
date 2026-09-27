@@ -17,9 +17,11 @@ export const config = {
   pausarCronometroAbaOculta: booleano(env.VITE_PAUSAR_CRONOMETRO_ABA_OCULTA, false),
 }
 
-/** Opções de quantidade de questões por missão (vira `num_questoes` em POST /sessoes). */
-export const OPCOES_NUM_QUESTOES = [5, 10, 15, 20]
-export const NUM_QUESTOES_PADRAO = 10
+/**
+ * Quantidade fixa de questões por missão (o aluno não escolhe). Quem aplica é o backend; o frontend
+ * usa este valor só no resumo da configuração e o mock o usa no sorteio. Manter igual ao do backend.
+ */
+export const NUM_QUESTOES_POR_SESSAO = 10
 
 /** Estimativa usada no "Tempo estimado" do resumo da configuração. */
 export const SEGUNDOS_ESTIMADOS_POR_QUESTAO = 90

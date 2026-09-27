@@ -4,6 +4,7 @@ import { imgLogoCosmo, imgPython } from '../components/cosmo/imagens.js'
 import { Botao } from '../components/ui/Botao.jsx'
 import { AneisGallifreyanos } from '../components/whovian/AneisGallifreyanos.jsx'
 import { Tardis } from '../components/whovian/Tardis.jsx'
+import { NUM_QUESTOES_POR_SESSAO } from '../config.js'
 import { PLANETAS } from '../lib/visualTopico.js'
 
 /** Os 4 dados coletados e seus objetivos (Documentação Funcional §2). */
@@ -68,7 +69,7 @@ export default function Sobre() {
           Como funciona
         </h2>
         <Passo numero="1" icone={Layers} titulo="Configure a missão">
-          Escolha os tópicos e quantas questões quer responder.
+          Escolha os tópicos e responda uma missão de {NUM_QUESTOES_POR_SESSAO} questões.
         </Passo>
         <Passo numero="2" icone={Target} titulo="Responda e aprenda">
           Cada resposta traz a justificativa de todas as alternativas na hora.
