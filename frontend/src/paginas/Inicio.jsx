@@ -87,7 +87,8 @@ export default function Inicio() {
         </dl>
       )}
 
-      <div className="mt-10 flex w-full justify-center sm:absolute sm:bottom-16 sm:right-8 sm:mt-0 sm:w-auto">
+      {/* No fluxo (não absolute): o balão de fala é largo demais para caber ao lado das estatísticas. */}
+      <div className="mt-10 flex w-full max-w-2xl justify-center sm:justify-end">
         <Astronauta
           tamanho="w-16 sm:w-20"
           lado="esquerda"
